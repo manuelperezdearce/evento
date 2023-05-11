@@ -1,0 +1,19 @@
+{
+  "name": "front",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "^13.4.1"
+  },
+  "devDependencies": {
+    "@types/node": "20.1.2",
+    "@types/react": "18.2.6",
+    "typescript": "5.0.4"
+  }
+}
