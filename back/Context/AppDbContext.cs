@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using back.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 
 public class AppDbContext : DbContext
@@ -7,5 +8,5 @@ public class AppDbContext : DbContext
     {
     }
 
-    //public DbSet<Class> Plate { get; set; }
+    public DbSet<User> User { get; set; }
 }
