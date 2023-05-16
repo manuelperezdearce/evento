@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
+namespace back;
 public class Startup
 {
     private readonly string myCors = "";
@@ -23,12 +24,16 @@ public class Startup
 
         services.AddControllers();
 
+
         services.AddSwaggerGen(c =>
         {
             c.SwaggerDoc("v1", new OpenApiInfo { Title = "P16API", Version = "v1" });
         });
         services.AddDbContext<AppDbContext>(options => options.UseSqlServer(
                  Configuration.GetConnectionString("connectionString")));
+
+        services.AddScoped<Services.UserService>();
+
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

@@ -1,8 +1,11 @@
 import { Hero } from './components/Hero'
 import { SliderEvents } from './components/SliderEvents'
 import styles from './page.module.css'
+import Image from 'next/image';
+import styles from './page.module.css';
 
-export default function Home () {
+
+export default function Home() {
   return (
     <main className={styles.main}>
       <h1>hello no country</h1>
@@ -10,6 +13,7 @@ export default function Home () {
       <SliderEvents />
       <SliderEvents />
       <SliderEvents />
+
     </main>
-  )
+  );
 }

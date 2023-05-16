@@ -3349,11 +3349,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\myprojects\\event\\back\\back.csproj",
+      "projectUniqueName": "C:\\Projects\\c11-11-t-csharp-react\\back\\back.csproj",
       "projectName": "back",
-      "projectPath": "C:\\myprojects\\event\\back\\back.csproj",
+      "projectPath": "C:\\Projects\\c11-11-t-csharp-react\\back\\back.csproj",
       "packagesPath": "C:\\Users\\Braian\\.nuget\\packages\\",
-      "outputPath": "C:\\myprojects\\event\\back\\obj\\",
+      "outputPath": "C:\\Projects\\c11-11-t-csharp-react\\back\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Braian\\AppData\\Roaming\\NuGet\\NuGet.Config",
