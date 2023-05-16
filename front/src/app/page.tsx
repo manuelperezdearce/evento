@@ -1,9 +1,7 @@
-import { Hero } from './components/Hero'
-import { SliderEvents } from './components/SliderEvents'
-import styles from './page.module.css'
+import { Hero } from './common/components';
+import { SliderEvents } from './common/components/SliderEvents';
 import Image from 'next/image';
 import styles from './page.module.css';
-
 
 export default function Home() {
   return (
@@ -13,7 +11,6 @@ export default function Home() {
       <SliderEvents />
       <SliderEvents />
       <SliderEvents />
-
     </main>
   );
 }
