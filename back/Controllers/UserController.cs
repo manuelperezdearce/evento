@@ -1,4 +1,4 @@
-﻿using back.DTO.User;
+﻿using back.Dtos.User;
 using back.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,42 +11,22 @@ public class UserController : ControllerBase
 {
     private readonly UserService _userService;
 
-    private UserController(UserService userService)
+    public UserController(UserService userService)
     {
         _userService = userService;
     }
 
-    // GET: api/<UserController>
-    [HttpGet]
-    public IEnumerable<string> Get()
-    {
-        return new string[] { "value1", "value2" };
-    }
-
-    // GET api/<UserController>/5
-    [HttpGet("{id}")]
-    public string Get(int id)
-    {
-        return "value";
-    }
-
-    // POST api/<UserController>
     [HttpPost]
-    public void Create([FromBody] UserInDTO form)
+    public async Task<IActionResult> Create(UserInDto userDTO)
     {
-        //LLamar a UserService.Create(value)
-        _userService.Create(form);
+        var response = await _userService.Create(userDTO);
+
+        if (response is null)
+            return BadRequest("Error");
+
+        return Ok();
+
+        //return CreatedAtAction(nameof(GetById), new {id=}, )
     }
 
-    // PUT api/<UserController>/5
-    [HttpPut("{id}")]
-    public void Put(int id, [FromBody] string value)
-    {
-    }
-
-    // DELETE api/<UserController>/5
-    [HttpDelete("{id}")]
-    public void Delete(int id)
-    {
-    }
 }
