@@ -33,7 +33,7 @@ public class Startup
                  Configuration.GetConnectionString("connectionString")));
 
         services.AddScoped<Services.UserService>();
-
+        services.AddScoped<Services.CategoryService>();
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
