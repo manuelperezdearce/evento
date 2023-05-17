@@ -1,16 +1,14 @@
-import { Hero } from './common/components';
-import { SliderEvents } from './common/components/SliderEvents';
-import Image from 'next/image';
-import styles from './page.module.css';
+import { Hero } from './common/components'
+import { SliderEvent } from './common/components/Slider'
 
-export default function Home() {
+export default function Home () {
   return (
-    <main className={styles.main}>
+    <main>
       <h1>hello no country</h1>
       <Hero />
-      <SliderEvents />
-      <SliderEvents />
-      <SliderEvents />
+      <SliderEvent titleSlider='Eventos nocturnos' />
+      <SliderEvent titleSlider='Conciertos' />
+      <SliderEvent titleSlider='Eventos familiares' />
     </main>
-  );
+  )
 }

@@ -17,7 +17,7 @@ import AdbIcon from '@mui/icons-material/Adb'
 const pages = ['Home', 'Explorar', 'Nosotros']
 const settings = ['Perfil', 'Cuenta', 'Logout']
 
-function Navbar () {
+export const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null)
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
     null
@@ -162,4 +162,3 @@ function Navbar () {
     </AppBar>
   )
 }
-export default Navbar
