@@ -1,14 +1,15 @@
-import { Hero } from './common/components'
-import { SliderEvent } from './common/components/Slider'
+import styles from './page.module.css';
 
-export default function Home () {
+export default function Home() {
   return (
-    <main>
+    <main className={styles.main}>
       <h1>hello no country</h1>
-      <Hero />
-      <SliderEvent titleSlider='Eventos nocturnos' />
-      <SliderEvent titleSlider='Conciertos' />
-      <SliderEvent titleSlider='Eventos familiares' />
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Est iure culpa
+        delectus magnam ipsa, optio reprehenderit voluptate reiciendis hic
+        veniam nemo quia velit fuga cupiditate. Facere veniam molestias eos
+        voluptatum.
+      </p>
     </main>
-  )
+  );
 }
