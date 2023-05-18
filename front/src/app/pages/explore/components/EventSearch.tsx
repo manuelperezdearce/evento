@@ -16,7 +16,7 @@ export const EventSearch = () => {
     return (
         <Box
             component="form"
-            sx={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            sx={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
             <TextField
                 label="Tipo de evento o nombre"
                 placeholder="Fiesta electronica"
