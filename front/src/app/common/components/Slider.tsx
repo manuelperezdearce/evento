@@ -1,13 +1,12 @@
-'use client'
-import React from 'react'
-import Slider from 'react-slick'
-import BasicCard from './Card'
+'use client';
+import React from 'react';
+import BasicCard from './Card';
 
 interface SliderProps {
-  titleSlider: string
+  titleSlider: string;
 }
 
-function SamplePrevArrow ({ className, style, onClick }: any) {
+function SamplePrevArrow({ className, style, onClick }: any) {
   return (
     <div
       className={className}
@@ -16,10 +15,10 @@ function SamplePrevArrow ({ className, style, onClick }: any) {
     >
       BACK
     </div>
-  )
+  );
 }
 
-function SampleNextArrow ({ className, style, onClick }: any) {
+function SampleNextArrow({ className, style, onClick }: any) {
   return (
     <div
       className={className}
@@ -28,11 +27,11 @@ function SampleNextArrow ({ className, style, onClick }: any) {
     >
       NEXT
     </div>
-  )
+  );
 }
 
 export const SliderEvent = ({ titleSlider }: SliderProps) => {
-  const slider = React.useRef<any>(null)
+  const slider = React.useRef<any>(null);
 
   const settings = {
     dots: true,
@@ -48,8 +47,8 @@ export const SliderEvent = ({ titleSlider }: SliderProps) => {
           slidesToShow: 3,
           slidesToScroll: 3,
           infinite: true,
-          dots: true
-        }
+          dots: true,
+        },
       },
 
       {
@@ -58,22 +57,22 @@ export const SliderEvent = ({ titleSlider }: SliderProps) => {
           slidesToShow: 2,
           slidesToScroll: 2,
           infinite: true,
-          dots: true
-        }
+          dots: true,
+        },
       },
       {
         breakpoint: 800,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          initialSlide: 2
-        }
-      }
+          initialSlide: 2,
+        },
+      },
     ],
 
     nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />
-  }
+    prevArrow: <SamplePrevArrow />,
+  };
 
   return (
     <div>
@@ -89,52 +88,52 @@ export const SliderEvent = ({ titleSlider }: SliderProps) => {
         </button>
       </div>
 
-      <Slider ref={slider} {...settings}>
+      {/* <Slider ref={slider} {...settings}>
         {products?.map((item, index) => {
-          return <BasicCard key={index} item={item} />
+          return <BasicCard key={index} item={item} />;
         })}
-      </Slider>
+      </Slider> */}
     </div>
-  )
-}
+  );
+};
 
 const products = [
   {
     id: 1,
     image:
       'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg',
-    name: 'Summer party'
+    name: 'Summer party',
     //all props
   },
   {
     id: 2,
     image:
       'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg',
-    name: 'winter party'
+    name: 'winter party',
   },
   {
     id: 3,
     image:
       'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg',
-    name: 'spring party'
+    name: 'spring party',
   },
   {
     id: 4,
     image:
       'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg',
-    name: 'spring party'
+    name: 'spring party',
   },
 
   {
     id: 5,
     image:
       'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg',
-    name: 'spring party'
+    name: 'spring party',
   },
   {
     id: 6,
     image:
       'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg',
-    name: 'spring party'
-  }
-]
+    name: 'spring party',
+  },
+];
