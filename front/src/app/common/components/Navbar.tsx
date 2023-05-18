@@ -1,61 +1,63 @@
-'use client'
-import * as React from 'react'
-import AppBar from '@mui/material/AppBar'
-import Box from '@mui/material/Box'
-import Toolbar from '@mui/material/Toolbar'
-import IconButton from '@mui/material/IconButton'
-import Typography from '@mui/material/Typography'
-import Menu from '@mui/material/Menu'
-import MenuIcon from '@mui/icons-material/Menu'
-import Container from '@mui/material/Container'
-import Avatar from '@mui/material/Avatar'
-import Button from '@mui/material/Button'
-import Tooltip from '@mui/material/Tooltip'
-import MenuItem from '@mui/material/MenuItem'
-import AdbIcon from '@mui/icons-material/Adb'
-import Link from 'next/link'
+'use client';
+import * as React from 'react';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import Menu from '@mui/material/Menu';
+import MenuIcon from '@mui/icons-material/Menu';
+import Container from '@mui/material/Container';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import Tooltip from '@mui/material/Tooltip';
+import MenuItem from '@mui/material/MenuItem';
+import AdbIcon from '@mui/icons-material/Adb';
+import Link from 'next/link';
 
 const pages = [
   { name: 'Home', route: '/' },
   { name: 'Explorar', route: 'pages/events' },
-  { name: 'Nosotros', route: 'pages/about' }
-]
+  { name: 'Nosotros', route: 'pages/about' },
+];
 const settings = [
   { name: 'Perfil', route: 'pages/users' },
-  { name: 'Logout', route: 'pages/auth' }
-]
+  { name: 'Logout', route: 'pages/auth' },
+];
 
 export const Navbar = () => {
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null)
+  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
+    null
+  );
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
     null
-  )
+  );
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget)
-  }
+    setAnchorElNav(event.currentTarget);
+  };
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElUser(event.currentTarget)
-  }
+    setAnchorElUser(event.currentTarget);
+  };
 
   const handleCloseNavMenu = () => {
-    setAnchorElNav(null)
-  }
+    setAnchorElNav(null);
+  };
 
   const handleCloseUserMenu = () => {
-    setAnchorElUser(null)
-  }
+    setAnchorElUser(null);
+  };
 
   return (
-    <AppBar position='static'>
-      <Container maxWidth='xl'>
+    <AppBar position="static">
+      <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Link href={'/'} style={{ display: 'flex' }}>
             <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
             <Typography
-              variant='h6'
+              variant="h6"
               noWrap
-              component='a'
+              component="a"
               sx={{
                 mr: 2,
                 display: { xs: 'none', md: 'flex' },
@@ -63,7 +65,7 @@ export const Navbar = () => {
                 fontWeight: 700,
                 letterSpacing: '.3rem',
                 color: 'inherit',
-                textDecoration: 'none'
+                textDecoration: 'none',
               }}
             >
               LOGO
@@ -72,37 +74,37 @@ export const Navbar = () => {
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
-              size='large'
-              aria-label='account of current user'
-              aria-controls='menu-appbar'
-              aria-haspopup='true'
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color='inherit'
+              color="inherit"
             >
               <MenuIcon />
             </IconButton>
             <Menu
-              id='menu-appbar'
+              id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
                 vertical: 'bottom',
-                horizontal: 'left'
+                horizontal: 'left',
               }}
               keepMounted
               transformOrigin={{
                 vertical: 'top',
-                horizontal: 'left'
+                horizontal: 'center',
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: 'block', md: 'none' }
+                display: { xs: 'block', md: 'none' },
               }}
             >
               {pages.map(({ name, route }) => (
-                <Link href={route || ''}>
+                <Link href={route || ''} key={'name'}>
                   <MenuItem key={name} onClick={handleCloseNavMenu}>
-                    <Typography textAlign='center'>{name}</Typography>
+                    <Typography textAlign="center">{name}</Typography>
                   </MenuItem>
                 </Link>
               ))}
@@ -110,10 +112,10 @@ export const Navbar = () => {
           </Box>
           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
-            variant='h5'
+            variant="h5"
             noWrap
-            component='a'
-            href=''
+            component="a"
+            href=""
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
@@ -122,7 +124,7 @@ export const Navbar = () => {
               fontWeight: 700,
               letterSpacing: '.3rem',
               color: 'inherit',
-              textDecoration: 'none'
+              textDecoration: 'none',
             }}
           >
             LOGO
@@ -142,23 +144,23 @@ export const Navbar = () => {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title='Open settings'>
+            <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt='Remy Sharp' src='/static/images/avatar/2.jpg' />
+                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
             <Menu
               sx={{ mt: '45px' }}
-              id='menu-appbar'
+              id="menu-appbar"
               anchorEl={anchorElUser}
               anchorOrigin={{
                 vertical: 'top',
-                horizontal: 'right'
+                horizontal: 'right',
               }}
               keepMounted
               transformOrigin={{
                 vertical: 'top',
-                horizontal: 'right'
+                horizontal: 'right',
               }}
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
@@ -166,7 +168,7 @@ export const Navbar = () => {
               {settings.map(({ name, route }) => (
                 <Link href={`${name !== 'Perfil' ? route : `${route}/1`}`}>
                   <MenuItem key={route} onClick={handleCloseUserMenu}>
-                    <Typography textAlign='center'>{name}</Typography>
+                    <Typography textAlign="center">{name}</Typography>
                   </MenuItem>
                 </Link>
               ))}
@@ -175,5 +177,5 @@ export const Navbar = () => {
         </Toolbar>
       </Container>
     </AppBar>
-  )
-}
+  );
+};
