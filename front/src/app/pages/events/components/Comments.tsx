@@ -1,4 +1,4 @@
-import { Paper, Grid, Avatar, Box, Typography } from '@mui/material';
+import { Paper, Grid, Box, Typography, Avatar } from '@mui/material';
 import React from 'react';
 const imgLink =
 	'https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260';
