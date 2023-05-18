@@ -4,6 +4,7 @@ import {
     Checkbox,
     FormControl,
     FormControlLabel,
+    FormGroup,
     InputAdornment,
     TextField,
 } from '@mui/material';
@@ -37,14 +38,12 @@ export const EventSearch = () => {
                     flexDirection: 'row',
                     justifyContent: 'space-between',
                 }}>
-                <FormControlLabel
-                    control={<Checkbox checked={true} name="todopublico" />}
-                    label="Todo público"
-                />
-                <FormControlLabel
-                    control={<Checkbox checked={true} name="gratis" />}
-                    label="Gratis"
-                />
+                <FormGroup>
+                    <FormControlLabel control={<Checkbox />} label="Gratis" />
+                </FormGroup>
+                <FormGroup>
+                    <FormControlLabel control={<Checkbox />} label="Solo adultos" />
+                </FormGroup>
                 <TextField
                     label="Ciudad"
                     placeholder="Buenos Aires"
