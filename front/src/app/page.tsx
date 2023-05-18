@@ -3,10 +3,25 @@ import { Hero } from "./common/components";
 import { EventCard } from "./common/components/EventCard";
 import SliderContainer from "./pages/home/components/SliderContainer";
 
+
+function getID() {
+  return Math.floor(Math.random() * 1000000)
+}
+
 const sectionArrays = [
-  { title: "Panoramas Hoy" },
-  { title: "Destacados" },
-  { title: "Próximos 7 días" }
+  {
+    title: "Panoramas Hoy",
+    id: getID()
+  },
+  {
+    title: "Destacados",
+    id: getID()
+  },
+
+  {
+    title: "Próximos 7 días",
+    id: getID()
+  }
 ]
 
 export default function Home() {
@@ -16,9 +31,10 @@ export default function Home() {
       {
         sectionArrays.map((item) => {
           return (
-            <SliderContainer sliderTitle={item.title} >
+            <SliderContainer key={item.id} sliderTitle={item.title} >
               {
                 Array(4).fill(0).map((item) => {
+
                   return (
                     <EventCard key={item} />
                   )
