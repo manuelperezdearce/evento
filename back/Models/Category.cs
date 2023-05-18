@@ -9,7 +9,6 @@ public class Category
 
     [Key]
     public int id { get; set; }
-
     [DisplayName("Nombre")]
     [Required(ErrorMessage = "ingrese el nombre")]
     [Column(TypeName = "varchar(200)")]
