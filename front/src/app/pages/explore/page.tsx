@@ -1,7 +1,7 @@
 'use client';
 import { Container, Grid } from '@mui/material';
 import { EventSearch } from './components/EventSearch';
-import { EventCard } from './components/EventCard';
+import { EventCard } from '../../common/components/EventCard';
 import { EventsContainer } from './components/EventsContainer';
 
 export default function Explore() {
