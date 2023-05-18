@@ -22,10 +22,16 @@ export const SearchFilters = () => {
                 gap: '2rem',
             }}>
             <FormGroup>
-                <FormControlLabel control={<Checkbox />} label="Gratis" />
+                <FormControlLabel
+                    control={<Checkbox sx={{ '& .MuiSvgIcon-root': { fontSize: 30 } }} />}
+                    label="Gratis"
+                />
             </FormGroup>
             <FormGroup>
-                <FormControlLabel control={<Checkbox />} label="Solo adultos" />
+                <FormControlLabel
+                    control={<Checkbox sx={{ '& .MuiSvgIcon-root': { fontSize: 30 } }} />}
+                    label="Solo adultos"
+                />
             </FormGroup>
             <TextField
                 label="Ciudad"
