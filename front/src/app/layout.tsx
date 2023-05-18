@@ -1,11 +1,14 @@
+'use client';
+import { MuiThemeProvider } from './styles/MuiThemeProvider';
 import './globals.css';
-import { Inter } from 'next/font/google';
+import { Inter, Outfit } from 'next/font/google';
 import { Providers } from './store/provider';
 import { Footer } from './common/components/Footer';
 import { Navbar } from './common/components/Navbar';
-import { MuiThemeProvider } from './styles/MuiThemeProvider';
+import Container from '@mui/material/Container';
+import Head from 'next/head';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Outfit({ subsets: ['latin'] });
 
 export const metadata = {
   title: 'EventTo',
@@ -19,14 +22,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <Providers>
-        <body>
-          <MuiThemeProvider>
-            <Navbar />
-            {children}
-          </MuiThemeProvider>
-        </body>
-      </Providers>
+      <Head>
+        <title>NeoVest SignIn</title>
+      </Head>
+      {/* <Providers> */}
+      <body>
+        <MuiThemeProvider>
+          <Navbar />
+          <Container fixed>{children}</Container>
+        </MuiThemeProvider>
+      </body>
+      {/* </Providers> */}
     </html>
   );
 }
