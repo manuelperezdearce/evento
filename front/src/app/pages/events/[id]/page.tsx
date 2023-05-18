@@ -1,6 +1,5 @@
 'use client';
 import { Avatar, Box, CardHeader, CardMedia, Chip, IconButton, Typography } from '@mui/material';
-import { Container } from '@mui/system';
 import { useParams } from 'next/navigation';
 import PlaceRoundedIcon from '@mui/icons-material/PlaceRounded';
 import PetsIcon from '@mui/icons-material/Pets';
@@ -8,6 +7,9 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import ShareIcon from '@mui/icons-material/Share';
 import { red } from '@mui/material/colors';
 import Link from 'next/link';
+import { Comments } from '../components/Comments';
+import { Location } from '../components/Location';
+import { ButtonConnect } from '../components/ButtonConnect';
 
 export default function EventDetail() {
 	const { id } = useParams();
@@ -15,9 +17,9 @@ export default function EventDetail() {
 	//TODO make a functionality to get the event by id
 
 	return (
-		<Container>
+		<>
 			<Typography variant="h3" gutterBottom>
-				Fiesta electronica
+				Fiesta electronica #{id}
 			</Typography>
 
 			<Box
@@ -79,11 +81,11 @@ export default function EventDetail() {
 					/>
 				</Box>
 				<Box>
-					<Chip icon={<ShareIcon />} label="conectar" color="primary" />
+					<ButtonConnect />
 				</Box>
 			</Box>
-			<div className="addressEvent">ubicacion</div>
-			<div className="comments">comments</div>
-		</Container>
+			<Location />
+			<Comments />
+		</>
 	);
 }
