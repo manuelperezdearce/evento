@@ -1,8 +1,9 @@
-import styles from './page.module.css';
+// import styles from './page.module.css';
 
 export default function Home() {
   return (
-    <main className={styles.main}>
+    // <main className={styles.main}>
+    <main>
       <h1>hello no country</h1>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Est iure culpa
