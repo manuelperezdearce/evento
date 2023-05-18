@@ -1,9 +1,7 @@
-﻿namespace back.Dtos.Category;
+﻿namespace back.Dtos.Input.Category;
 
-public class CategoryDto
+public class CategoryCreateInDto
 {
-
-  
     public string name { get; set; }
     public string description { get; set; }
     public string type { get; set; }

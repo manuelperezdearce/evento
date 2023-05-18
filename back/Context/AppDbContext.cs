@@ -9,6 +9,7 @@ public class AppDbContext : DbContext
     }
 
     public DbSet<User> User { get; set; }
+
     public DbSet<Category> Category { get; set; }
 
 }

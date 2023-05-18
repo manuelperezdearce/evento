@@ -1,10 +1,9 @@
-﻿namespace back.Dtos.Category;
+﻿namespace back.Dtos.Output.Category;
 
-public class GetCategoryIdDto
+public class CategoryGetOutDto
 {
     public int id { get; set; }
     public string name { get; set; }
     public string description { get; set; }
     public string type { get; set; }
-
 }
