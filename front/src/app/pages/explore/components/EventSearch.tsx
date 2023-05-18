@@ -1,19 +1,18 @@
 'use client';
-import {
-    Box,
-    Checkbox,
-    FormControl,
-    FormControlLabel,
-    FormGroup,
-    InputAdornment,
-    TextField,
-} from '@mui/material';
+import { useState } from 'react';
+import { Box, Button, Drawer, InputAdornment, Stack, TextField } from '@mui/material';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
-import PlaceRoundedIcon from '@mui/icons-material/PlaceRounded';
-import TodayRoundedIcon from '@mui/icons-material/TodayRounded';
-import EventRoundedIcon from '@mui/icons-material/EventRounded';
+import SortRoundedIcon from '@mui/icons-material/SortRounded';
+import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+
+import { SearchFilters } from './SearchFilters';
 
 export const EventSearch = () => {
+    const [open, setOpen] = useState(false);
+
+    const toggleDrawer = () => {
+        setOpen(!open);
+    };
     return (
         <Box
             component="form"
@@ -21,66 +20,51 @@ export const EventSearch = () => {
             <TextField
                 label="Tipo de evento o nombre"
                 placeholder="Fiesta electronica"
-                fullWidth
                 InputProps={{
                     sx: { borderRadius: 30 },
                     startAdornment: (
                         <InputAdornment position="start">
-                            <SearchRoundedIcon color="primary" />
+                            <SearchRoundedIcon color="primary" fontSize="large" />
+                        </InputAdornment>
+                    ),
+                    endAdornment: (
+                        <InputAdornment
+                            position="end"
+                            onClick={toggleDrawer}
+                            sx={{
+                                background: '#8E24AA',
+                                color: '#fff',
+                                padding: '1.2rem',
+                                borderRadius: '50%',
+                                height: '1rem',
+                                width: '1rem',
+                                cursor: 'pointer',
+                                display: { xs: 'flex', md: 'none' },
+                                justifyContent: 'center',
+                                '&:hover': { background: '#FBC02D' },
+                            }}>
+                            <SortRoundedIcon />
                         </InputAdornment>
                     ),
                 }}
             />
-            <FormControl
-                fullWidth
-                sx={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                    justifyContent: 'space-between',
-                }}>
-                <FormGroup>
-                    <FormControlLabel control={<Checkbox />} label="Gratis" />
-                </FormGroup>
-                <FormGroup>
-                    <FormControlLabel control={<Checkbox />} label="Solo adultos" />
-                </FormGroup>
-                <TextField
-                    label="Ciudad"
-                    placeholder="Buenos Aires"
-                    InputProps={{
-                        sx: { borderRadius: 30 },
-                        startAdornment: (
-                            <InputAdornment position="start">
-                                <PlaceRoundedIcon color="primary" />
-                            </InputAdornment>
-                        ),
-                    }}
-                />
-                <TextField
-                    label="Desde"
-                    type="date"
-                    InputProps={{
-                        sx: { borderRadius: 30 },
-                        startAdornment: (
-                            <InputAdornment position="start">
-                                <TodayRoundedIcon color="primary" />
-                            </InputAdornment>
-                        ),
-                    }}
-                />
-                <TextField
-                    label="Hasta"
-                    type="date"
-                    InputProps={{
-                        sx: { borderRadius: 30 },
-                        startAdornment: (
-                            <InputAdornment position="start">
-                                <EventRoundedIcon color="primary" />
-                            </InputAdornment>
-                        ),
-                    }}
-                />
-            </FormControl>
+            <Drawer open={open} anchor="left">
+                <Stack sx={{ padding: '2rem', gap: '2rem' }}>
+                    <CloseRoundedIcon
+                        onClick={toggleDrawer}
+                        color="primary"
+                        fontSize="large"
+                        sx={{ alignSelf: 'end', cursor: 'pointer' }}
+                    />
+                    <SearchFilters />
+                    <Button variant="contained" onClick={toggleDrawer}>
+                        Filtrar
+                    </Button>
+                </Stack>
+            </Drawer>
+            <Box sx={{ display: { xs: 'none', md: 'block' } }}>
+                <SearchFilters />
+            </Box>
         </Box>
     );
 };
