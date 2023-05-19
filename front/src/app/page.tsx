@@ -1,7 +1,7 @@
-'use client'
-import { Hero } from "./common/components";
-import { EventCard } from "./common/components/EventCard";
-import SliderContainer from "./pages/home/components/SliderContainer";
+'use client';
+import { Container } from '@mui/material';
+import { EventCard } from './common/components/EventCard';
+import SliderContainer from './pages/home/components/SliderContainer';
 
 
 function getID() {
@@ -27,9 +27,8 @@ const sectionArrays = [
 export default function Home() {
   return (
     <main>
-      <Hero />
-      {
-        sectionArrays.map((item) => {
+      <Container maxWidth="lg" sx={{ mt: '3rem', mb: '3rem' }}>
+        {sectionArrays.map((item) => {
           return (
             <SliderContainer key={item.id} sliderTitle={item.title} >
               {
@@ -41,9 +40,9 @@ export default function Home() {
                 })
               }
             </SliderContainer>
-          )
-        })
-      }
+          );
+        })}
+      </Container>
     </main>
   );
 }

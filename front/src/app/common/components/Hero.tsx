@@ -1,39 +1,66 @@
-import { Avatar, Box, Typography } from '@mui/material'
-
+'use client'
+import { Avatar, Box, Typography, TextField, InputAdornment } from '@mui/material'
+import SearchRoundedIcon from '@mui/icons-material/SearchRounded'
 import React from 'react'
 
 export const Hero = () => {
+
+
+
   return (
     <Box sx={{
+      height: { md: "25rem" },
       position: "relative",
       display: "flex",
       flexFlow: "row wrap",
-      alignItems: "center"
+      alignItems: "center",
+      justifyContent: "center"
 
     }}>
       <Box sx={{
         display: "flex",
+        gap: "1rem",
         flexFlow: "column nowrap",
         alignItems: "center",
         color: "white",
         position: "absolute",
-        // top: "30%",
-        // left: "25%",
         margin: "auto",
         zIndex: "111"
       }}>
-        <Typography variant='h2' component="h2">
+        <Typography variant='h2' component="h2" sx={{
+          fontSize: { xs: "2rem", sm: "2.5rem", md: "4rem" }
+        }}>
           Qué quieres hacer?
         </Typography>
-        <Typography variant='h3' component="h3">(texto call to action)</Typography>
 
+        <TextField
+          className='HeroTextField'
+          variant='outlined'
+          placeholder="Buscar actividad"
+          sx={{
+            width: '100%',
+            padding: "0"
+          }}
+          InputProps={{
+            sx: {
+              borderRadius: 30,
+              border: '3px solid white',
+              color: "#fff",
+            },
+            startAdornment: (
+              <InputAdornment position="start">
+                <SearchRoundedIcon fontSize="large" sx={{
+                  color: "#fff"
+                }} />
+              </InputAdornment>
+            )
+          }}
+        />
       </Box>
-
-
       <Avatar variant='square' src="/hero.jpg" alt="" sx={{
         width: '100%',
         height: '100%'
       }} />
-    </Box>
+    </Box >
   )
 }
