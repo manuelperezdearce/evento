@@ -1,22 +1,23 @@
-import { Paper, Grid, Box, Typography, Avatar } from '@mui/material';
-import React from 'react';
+import { Paper, Grid, Box, Typography, Avatar } from "@mui/material";
+import "./style.css";
+import React from "react";
 const imgLink =
-  'https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260';
+  "https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260";
 
 export const Comments = () => {
   return (
     <Box>
-      <Typography variant="h5" fontWeight={'600'}>
+      <Typography variant="h5" fontWeight={"600"}>
         Opiniones
       </Typography>
-      <Paper style={{ padding: '10px 20px', marginTop: 20 }}>
+      <Paper style={{ padding: "10px 20px", marginTop: 20 }}>
         <Grid container wrap="nowrap" spacing={2}>
           <Grid item>
             <Avatar alt="Remy Sharp" src={imgLink} />
           </Grid>
           <Grid justifyContent="left" item xs zeroMinWidth>
-            <h4 style={{ margin: 0, textAlign: 'left' }}>Michel Michel</h4>
-            <p style={{ textAlign: 'left' }}>
+            <h4 style={{ margin: 0, textAlign: "left" }}>Michel Michel</h4>
+            <p className={"commentText"}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
               luctus ut est sed faucibus. Duis bibendum ac ex vehicula laoreet.
               Suspendisse congue vulputate lobortis. Pellentesque at interdum
@@ -25,22 +26,22 @@ export const Comments = () => {
               metus, efficitur lobortis nisi quis, molestie porttitor metus.
               Pellentesque et neque risus. Aliquam vulputate, mauris vitae
               tincidunt interdum, mauris mi vehicula urna, nec feugiat quam
-              lectus vitae ex.{' '}
+              lectus vitae ex.{" "}
             </p>
-            <p style={{ textAlign: 'left', color: 'gray' }}>
+            <p style={{ textAlign: "left", color: "gray" }}>
               posted 1 minute ago
             </p>
           </Grid>
         </Grid>
       </Paper>
-      <Paper style={{ padding: '40px 20px', marginTop: 10 }}>
+      <Paper style={{ padding: "40px 20px", marginTop: 10 }}>
         <Grid container wrap="nowrap" spacing={2}>
           <Grid item>
             <Avatar alt="Remy Sharp" src={imgLink} />
           </Grid>
           <Grid justifyContent="left" item xs zeroMinWidth>
-            <h4 style={{ margin: 0, textAlign: 'left' }}>Michel Michel</h4>
-            <p style={{ textAlign: 'left' }}>
+            <h4 style={{ margin: 0, textAlign: "left" }}>Michel Michel</h4>
+            <p className={"commentText"}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
               luctus ut est sed faucibus. Duis bibendum ac ex vehicula laoreet.
               Suspendisse congue vulputate lobortis. Pellentesque at interdum
@@ -49,9 +50,9 @@ export const Comments = () => {
               metus, efficitur lobortis nisi quis, molestie porttitor metus.
               Pellentesque et neque risus. Aliquam vulputate, mauris vitae
               tincidunt interdum, mauris mi vehicula urna, nec feugiat quam
-              lectus vitae ex.{' '}
+              lectus vitae ex.{" "}
             </p>
-            <p style={{ textAlign: 'left', color: 'gray' }}>
+            <p style={{ textAlign: "left", color: "gray" }}>
               posted 1 minute ago
             </p>
           </Grid>
