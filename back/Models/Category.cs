@@ -23,7 +23,4 @@ public class Category
     [Required(ErrorMessage ="Ingrese el tipo")]
     [Column(TypeName = "varchar(200)")]
     public string type { get; set; }
-
-
-
 }
