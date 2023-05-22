@@ -4,6 +4,7 @@ import { Box, Button, Drawer, InputAdornment, Stack, TextField } from '@mui/mate
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import SortRoundedIcon from '@mui/icons-material/SortRounded';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+import NavigateNextRoundedIcon from '@mui/icons-material/NavigateNextRounded';
 
 import { SearchFilters } from './SearchFilters';
 
@@ -30,7 +31,6 @@ export const EventSearch = () => {
                     endAdornment: (
                         <InputAdornment
                             position="end"
-                            onClick={toggleDrawer}
                             sx={{
                                 background: '#8E24AA',
                                 color: '#fff',
@@ -39,11 +39,21 @@ export const EventSearch = () => {
                                 height: '1rem',
                                 width: '1rem',
                                 cursor: 'pointer',
-                                display: { xs: 'flex', md: 'none' },
                                 justifyContent: 'center',
                                 '&:hover': { background: '#FBC02D' },
                             }}>
-                            <SortRoundedIcon />
+                            <SortRoundedIcon
+                                onClick={toggleDrawer}
+                                sx={{
+                                    display: { xs: 'flex', md: 'none' },
+                                }}
+                            />
+
+                            <NavigateNextRoundedIcon
+                                sx={{
+                                    display: { xs: 'none', md: 'flex' },
+                                }}
+                            />
                         </InputAdornment>
                     ),
                 }}
