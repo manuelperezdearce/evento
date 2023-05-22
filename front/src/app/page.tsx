@@ -3,26 +3,25 @@ import { Container } from '@mui/material';
 import { EventCard } from './common/components/EventCard';
 import SliderContainer from './pages/home/components/SliderContainer';
 
-
 function getID() {
-  return Math.floor(Math.random() * 1000000)
+  return Math.floor(Math.random() * 1000000);
 }
 
 const sectionArrays = [
   {
-    title: "Panoramas Hoy",
-    id: getID()
+    title: 'Panoramas Hoy',
+    id: getID(),
   },
   {
-    title: "Destacados",
-    id: getID()
+    title: 'Destacados',
+    id: getID(),
   },
 
   {
-    title: "Próximos 7 días",
-    id: getID()
-  }
-]
+    title: 'Próximos 7 días',
+    id: getID(),
+  },
+];
 
 export default function Home() {
   return (
@@ -30,15 +29,12 @@ export default function Home() {
       <Container maxWidth="lg" sx={{ mt: '3rem', mb: '3rem' }}>
         {sectionArrays.map((item) => {
           return (
-            <SliderContainer key={item.id} sliderTitle={item.title} >
-              {
-                Array(4).fill(0).map((item) => {
-
-                  return (
-                    <EventCard key={item} />
-                  )
-                })
-              }
+            <SliderContainer key={item.id} sliderTitle={item.title}>
+              {Array(4)
+                .fill(0)
+                .map((item) => {
+                  return <EventCard key={item} />;
+                })}
             </SliderContainer>
           );
         })}
