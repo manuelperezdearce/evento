@@ -16,9 +16,9 @@ import AdbIcon from '@mui/icons-material/Adb';
 import Link from 'next/link';
 
 const pages = [
-	{ name: 'Home', route: '/' },
+	// { name: 'Home', route: '/' },
 	{ name: 'Explorar', route: 'pages/explore' },
-	{ name: 'Nosotros', route: 'pages/about' },
+	// { name: 'Nosotros', route: 'pages/about' },
 ];
 const settings = [
 	{ name: 'Perfil', route: 'pages/users' },
@@ -64,7 +64,7 @@ export const Navbar = () => {
 								textDecoration: 'none',
 							}}
 						>
-							LOGO
+							EvenTo
 						</Typography>
 					</Link>
 
@@ -106,7 +106,11 @@ export const Navbar = () => {
 							))}
 						</Menu>
 					</Box>
+
+
 					<AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+
+
 					<Typography
 						variant="h5"
 						noWrap
@@ -123,9 +127,10 @@ export const Navbar = () => {
 							textDecoration: 'none',
 						}}
 					>
-						LOGO
+						EvenTo
 					</Typography>
-					<Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+
+					<Box sx={{ display: { xs: 'none', md: 'flex' } }}>
 						{pages.map(({ name, route }) => (
 							<Link href={route || ''}>
 								<Button
@@ -139,9 +144,29 @@ export const Navbar = () => {
 						))}
 					</Box>
 
-					<Box sx={{ flexGrow: 0 }}>
+					<Box sx={{ flexGrow: 0, display: "flex", }}>
+
+						<Link href="">
+							<Button
+								onClick={handleCloseNavMenu}
+								sx={{ my: 2, color: 'white', display: 'block' }}
+							>
+								Ingresar
+							</Button>
+						</Link>
+						<Link href="">
+							<Button
+								onClick={handleCloseNavMenu}
+								sx={{ my: 2, color: 'white', display: 'block' }}
+							>
+								Registrarse
+							</Button>
+						</Link>
+
+
+
 						<Tooltip title="Open settings">
-							<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+							<IconButton onClick={handleOpenUserMenu} sx={{ p: "0 0 0 8px" }}>
 								<Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
 							</IconButton>
 						</Tooltip>
