@@ -34,6 +34,7 @@ public class Startup
 
         services.AddScoped<Services.UserService>();
         services.AddScoped<Services.CategoryService>();
+        services.AddScoped<Services.ComentService>();
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
