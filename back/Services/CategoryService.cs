@@ -53,6 +53,20 @@ public class CategoryService
         };
         return result;
     }
+
+
+    public async Task<Category>Update(CategoryUpdateInDto categoryUpdateInDto)
+    {
+        Category category = await _context.Category.FindAsync(categoryUpdateInDto.id);
+        category.name=categoryUpdateInDto.name;
+        category.description=categoryUpdateInDto.description;
+        category.type = categoryUpdateInDto.type;
+
+        await _context.SaveChangesAsync();
+
+        return category;
+
+    }
 }
 
 
