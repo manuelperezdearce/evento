@@ -31,12 +31,12 @@ public class ComentController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
-        List<ComentGetOutDto> categories = await _comentService.GetAll();
+        List<ComentGetOutDto> coment = await _comentService.GetAll();
 
-        if (categories is null)
+        if (coment is null)
             return BadRequest("error");
 
-        return Ok(categories);
+        return Ok(coment);
     }
 
 
