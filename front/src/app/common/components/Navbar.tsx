@@ -13,7 +13,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { useEffect, useState } from "react";
-import { Link } from "@mui/material";
+import Link from "next/link";
 
 const pages = [
   { name: "Home", route: "/" },
@@ -60,7 +60,6 @@ export const Navbar = () => {
                 <Typography
                   variant="h6"
                   noWrap
-                  component="a"
                   sx={{
                     mr: 2,
                     display: { xs: "none", md: "flex" },
@@ -114,27 +113,27 @@ export const Navbar = () => {
                 </Menu>
               </Box>
               <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-              <Typography
-                variant="h5"
-                noWrap
-                component="a"
-                href=""
-                sx={{
-                  mr: 2,
-                  display: { xs: "flex", md: "none" },
-                  flexGrow: 1,
-                  fontFamily: "monospace",
-                  fontWeight: 700,
-                  letterSpacing: ".3rem",
-                  color: "inherit",
-                  textDecoration: "none",
-                }}
-              >
-                LOGO
-              </Typography>
+              <Link href="/">
+                <Typography
+                  variant="h5"
+                  noWrap
+                  sx={{
+                    mr: 2,
+                    display: { xs: "flex", md: "none" },
+                    flexGrow: 1,
+                    fontFamily: "monospace",
+                    fontWeight: 700,
+                    letterSpacing: ".3rem",
+                    color: "inherit",
+                    textDecoration: "none",
+                  }}
+                >
+                  LOGO
+                </Typography>
+              </Link>
               <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
                 {pages.map(({ name, route }) => (
-                  <Link href={route} key={name}>
+                  <Link href={`${route}`} key={name}>
                     <Button
                       key={name}
                       onClick={handleCloseNavMenu}
