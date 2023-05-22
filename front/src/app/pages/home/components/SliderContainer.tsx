@@ -14,7 +14,6 @@ export default function SliderContainer({ children, sliderTitle }: Custom) {
                 gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 15rem),1fr))",
                 gap: "1rem"
             }}>
-
                 {children}
             </Container>
         </article>
