@@ -56,7 +56,7 @@ export const SearchFilters = () => {
             <TextField
                 name="category"
                 label="Categoria"
-                placeholder="Concierto"
+                value={''}
                 fullWidth
                 select
                 InputProps={{

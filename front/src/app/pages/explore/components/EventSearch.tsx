@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Box, Button, Drawer, InputAdornment, Stack, TextField } from '@mui/material';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import SortRoundedIcon from '@mui/icons-material/SortRounded';
@@ -18,6 +18,7 @@ type TQuery = {
 };
 
 export const EventSearch = () => {
+    const searchBarInput = useRef<HTMLInputElement>(null);
     const [open, setOpen] = useState<boolean>(false);
 
     const toggleDrawer = () => {
@@ -29,7 +30,8 @@ export const EventSearch = () => {
         const form = event.target as HTMLFormElement;
         const formData = new FormData(form);
 
-        const name = formData.get('name') as string;
+        // const name = formData.get('name') as string;
+        const name = searchBarInput.current?.value as string;
         const isFree = formData.get('free') as true | null;
         const onlyAdults = formData.get('onlyAdults') as true | null;
         const city = formData.get('city') as string;
@@ -48,6 +50,7 @@ export const EventSearch = () => {
         };
 
         console.log(category);
+        console.log(query);
     };
 
     return (
@@ -59,6 +62,7 @@ export const EventSearch = () => {
                 name="name"
                 label="Tipo de evento o nombre"
                 placeholder="Fiesta electronica"
+                inputRef={searchBarInput}
                 InputProps={{
                     sx: { borderRadius: 30 },
                     startAdornment: (
@@ -107,7 +111,7 @@ export const EventSearch = () => {
                 }}
             />
             <Drawer open={open} anchor="left">
-                <Stack sx={{ padding: '2rem', gap: '2rem' }}>
+                <Stack component="form" sx={{ padding: '2rem', gap: '2rem' }}>
                     <CloseRoundedIcon
                         onClick={toggleDrawer}
                         color="primary"
@@ -115,7 +119,7 @@ export const EventSearch = () => {
                         sx={{ alignSelf: 'end', cursor: 'pointer' }}
                     />
                     <SearchFilters />
-                    <Button variant="contained" onClick={toggleDrawer}>
+                    <Button type="submit" variant="contained" onClick={toggleDrawer}>
                         Filtrar
                     </Button>
                 </Stack>
