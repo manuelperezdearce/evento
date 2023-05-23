@@ -30,11 +30,18 @@ const LoginOrRegister = [
   { name: "registrarse", route: "pages/registro" }
 ]
 
-export const Navbar = () => {
+const navSections = [
+  { title: 'logo div', display: ['block', 'block'], buttons: ['logo'] },
+  { title: 'explorar div', display: ['flex', 'block'], buttons: ['explorar', '¿Qué hacer hoy?'] },
+  { title: 'ingresar div', display: ['flex', 'block'], buttons: ['ingresar', 'registrarse'] },
+  { title: 'user div', display: ['block', 'none'], buttons: ['foto'] }
+
+]
 
 
 
 
+export const Navbar2 = () => {
   const [login, setLogin] = useState<boolean>(false)
   const [domLoaded, setDomLoaded] = useState(false);
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
@@ -58,10 +65,34 @@ export const Navbar = () => {
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
-        <Toolbar disableGutters sx={{
-          justifyContent: 'space-between'
-        }}>
-          <Link href={'/'} style={{ display: 'flex', color: '#fff' }}>
+        <Button variant="outlined" color="secondary" onClick={() => setLogin(true)}>Ingresar</Button>
+        <Button variant="outlined" color="secondary" onClick={() => setLogin(false)}>Desconectar</Button>
+        <Toolbar
+          disableGutters
+          sx={{
+            justifyContent: 'space-between'
+          }}>
+          {navSections.map((item) => {
+            return (
+              <Box sx={{
+                display: `${login ? item.display[0] : item.display[1]}`
+              }}> {item.buttons.map((button) => {
+                return (
+                  <Link sx={{ color: '#fff' }}>
+                    {button}
+                  </Link>
+                )
+              })}</Box>
+            )
+          })}
+
+
+
+
+
+
+
+          {/* <Link href={'/'} style={{ display: 'flex', color: '#fff' }}>
             <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
             <Typography
               variant="h6"
@@ -232,7 +263,7 @@ export const Navbar = () => {
                 ))}
               </Menu>
             </Box>
-          </Box>
+          </Box> */}
         </Toolbar>
       </Container>
     </AppBar >
