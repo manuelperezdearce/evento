@@ -1,10 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿namespace back.Dtos.Output.Event;
 
-namespace back.Models;
-
-public class Event
+public class EventGetOutDto
 {
-    [Key]
     public int id { get; set; }
 
     public string name { get; set; }
@@ -28,14 +25,6 @@ public class Event
     public int idRanking { get; set; }
 
     public int idEntry { get; set; }
-
-    public Coment Coment { get; set; }  
-
-    public Feature Feature { get; set; }
-
-    public Ranking Ranking { get; set; }
-
-    public Entry Entry { get; set; }
 
     public bool is_active { get; set; }
 
