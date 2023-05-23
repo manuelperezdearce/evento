@@ -23,17 +23,30 @@ export const SearchFilters = () => {
             }}>
             <FormGroup>
                 <FormControlLabel
-                    control={<Checkbox sx={{ '& .MuiSvgIcon-root': { fontSize: 30 } }} />}
+                    control={
+                        <Checkbox
+                            name="free"
+                            value={true}
+                            sx={{ '& .MuiSvgIcon-root': { fontSize: 30 } }}
+                        />
+                    }
                     label="Gratis"
                 />
             </FormGroup>
             <FormGroup>
                 <FormControlLabel
-                    control={<Checkbox sx={{ '& .MuiSvgIcon-root': { fontSize: 30 } }} />}
+                    control={
+                        <Checkbox
+                            name="onlyAdults"
+                            value={true}
+                            sx={{ '& .MuiSvgIcon-root': { fontSize: 30 } }}
+                        />
+                    }
                     label="Solo adultos"
                 />
             </FormGroup>
             <TextField
+                name="city"
                 label="Ciudad"
                 placeholder="Buenos Aires"
                 InputProps={{
@@ -46,6 +59,7 @@ export const SearchFilters = () => {
                 }}
             />
             <TextField
+                name="fromData"
                 label="Desde"
                 type="date"
                 InputProps={{
@@ -58,6 +72,7 @@ export const SearchFilters = () => {
                 }}
             />
             <TextField
+                name="toData"
                 label="Hasta"
                 type="date"
                 InputProps={{
