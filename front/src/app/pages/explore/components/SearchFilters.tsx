@@ -6,12 +6,19 @@ import {
     FormGroup,
     InputAdornment,
     TextField,
+    MenuItem,
 } from '@mui/material';
 import PlaceRoundedIcon from '@mui/icons-material/PlaceRounded';
 import TodayRoundedIcon from '@mui/icons-material/TodayRounded';
 import EventRoundedIcon from '@mui/icons-material/EventRounded';
+import CategoryIcon from '@mui/icons-material/Category';
 
 export const SearchFilters = () => {
+    const categories = [
+        { label: 'Elegir Categoria', value: '' },
+        { label: 'Cat 1', value: 'cat 1' },
+    ];
+
     return (
         <FormControl
             fullWidth
@@ -45,7 +52,30 @@ export const SearchFilters = () => {
                     label="Solo adultos"
                 />
             </FormGroup>
+
             <TextField
+                name="category"
+                label="Categoria"
+                placeholder="Concierto"
+                fullWidth
+                select
+                InputProps={{
+                    placeholder: 'Concierto',
+                    sx: { borderRadius: 30 },
+                    startAdornment: (
+                        <InputAdornment position="start">
+                            <CategoryIcon color="primary" />
+                        </InputAdornment>
+                    ),
+                }}>
+                {categories.map((item) => (
+                    <MenuItem key={item.label} value={item.value}>
+                        {item.label}
+                    </MenuItem>
+                ))}
+            </TextField>
+            <TextField
+                fullWidth
                 name="city"
                 label="Ciudad"
                 placeholder="Buenos Aires"
@@ -59,9 +89,10 @@ export const SearchFilters = () => {
                 }}
             />
             <TextField
-                name="fromData"
+                name="fromDate"
                 label="Desde"
                 type="date"
+                fullWidth
                 InputProps={{
                     sx: { borderRadius: 30 },
                     startAdornment: (
@@ -72,9 +103,10 @@ export const SearchFilters = () => {
                 }}
             />
             <TextField
-                name="toData"
+                name="toDate"
                 label="Hasta"
                 type="date"
+                fullWidth
                 InputProps={{
                     sx: { borderRadius: 30 },
                     startAdornment: (

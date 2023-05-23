@@ -8,8 +8,8 @@ import NavigateNextRoundedIcon from '@mui/icons-material/NavigateNextRounded';
 
 import { SearchFilters } from './SearchFilters';
 
-type Query = {
-    category: string;
+type TQuery = {
+    name: string;
     isFree: boolean;
     onlyAdults: boolean;
     city: string;
@@ -29,15 +29,17 @@ export const EventSearch = () => {
         const form = event.target as HTMLFormElement;
         const formData = new FormData(form);
 
-        const category = formData.get('category') as string;
+        const name = formData.get('name') as string;
         const isFree = formData.get('free') as true | null;
         const onlyAdults = formData.get('onlyAdults') as true | null;
         const city = formData.get('city') as string;
-        const toDate = formData.get('toData') as Date | null;
-        const fromDate = formData.get('fromData') as Date | null;
+        const toDate = formData.get('toDate') as Date | null;
+        const fromDate = formData.get('fromDate') as Date | null;
 
-        const query: Query = {
-            category,
+        const category = formData.get('category') as string;
+
+        const query: TQuery = {
+            name,
             isFree: isFree || false,
             onlyAdults: onlyAdults || false,
             city,
@@ -45,7 +47,7 @@ export const EventSearch = () => {
             fromDate,
         };
 
-        console.log(query);
+        console.log(category);
     };
 
     return (
@@ -54,7 +56,7 @@ export const EventSearch = () => {
             onSubmit={handleSearch}
             sx={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
             <TextField
-                name="category"
+                name="name"
                 label="Tipo de evento o nombre"
                 placeholder="Fiesta electronica"
                 InputProps={{
@@ -68,7 +70,6 @@ export const EventSearch = () => {
                         <InputAdornment
                             position="end"
                             sx={{
-                                // border: 'none',
                                 background: '#8E24AA',
                                 color: '#fff',
                                 padding: '1.2rem',
