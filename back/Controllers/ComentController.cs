@@ -16,7 +16,6 @@ public class ComentController : ControllerBase
       _comentService= comentService;
     }
 
-
     [HttpPost]
     public async Task<IActionResult> Create(ComentCreateInDto comentCreateInDto)
     {
@@ -26,19 +25,15 @@ public class ComentController : ControllerBase
         return Ok();
     }
 
-
-
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
-        List<ComentGetOutDto> coment = await _comentService.GetAll();
+        List<ComentGetOutDto> comment = await _comentService.GetAll();
 
-        if (coment is null)
+        if (comment is null)
             return BadRequest("error");
 
-        return Ok(coment);
+        return Ok(comment);
     }
-
-
 
 }
