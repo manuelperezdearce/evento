@@ -29,4 +29,6 @@ public class EventCreateInDto
 
     public bool Status { get; set; }
 
+    public string Slug { get; set; }
+
 }

@@ -29,4 +29,6 @@ public class EventGetOutDto
     public bool IsActive { get; set; }
 
     public bool Status { get; set; }
+
+    public string Slug { get; set; }
 }

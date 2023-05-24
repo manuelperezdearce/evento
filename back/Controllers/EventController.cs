@@ -38,10 +38,10 @@ public class EventController : ControllerBase
         return Ok(events);
     }
 
-    [HttpGet("{id}")]
-    public async Task<IActionResult> GetById(int id)
+    [HttpGet("{slug}")]
+    public async Task<IActionResult> GetById(string slug)
     {
-        EventGetOutDto events = await _EventService.GetById(id);
+        EventGetOutDto events = await _EventService.GetById(slug);
 
         if (events is null)
             return BadRequest("error");
