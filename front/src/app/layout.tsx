@@ -1,4 +1,3 @@
-
 import { MuiThemeProvider } from './styles/MuiThemeProvider';
 import './globals.css';
 import { Hero } from './common/components/Hero';
