@@ -6,17 +6,17 @@ public class Feature
 {
     [Key]
 
-    public int id { get; set; }
+    public int Id { get; set; }
 
-    public bool smoking { get; set; }
+    public bool Smoking { get; set; }
 
-    public string pets { get; set; }
+    public string Pets { get; set; }
 
-    public string drink { get; set; }
+    public string Drink { get; set; }
 
-    public string food { get; set; }
+    public string Food { get; set; }
 
-    public string wifi { get; set; }
+    public string Wifi { get; set; }
 
-    public string parking { get; set; }
+    public string Parking { get; set; }
 }

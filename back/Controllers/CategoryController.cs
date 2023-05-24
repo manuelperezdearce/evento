@@ -68,10 +68,5 @@ public class CategoryController : ControllerBase
         if (category is null)
             return BadRequest("error");
         return Ok(category);
-
     }
-
-
-
-
 }
