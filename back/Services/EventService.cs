@@ -17,18 +17,18 @@ public class EventService
     public async Task<Event> Create(EventCreateInDto eventCreateInDto)
     {
         var events = new Event();
-        events.name = eventCreateInDto.name;
-        events.short_description = eventCreateInDto.short_description;
-        events.description = eventCreateInDto.description; ;
-        events.date_start = eventCreateInDto.date_start;
-        events.date_end= eventCreateInDto.date_end;
-        events.created_at = eventCreateInDto.created_at;
-        events.ticket_price = eventCreateInDto.ticket_price;
-        events.idComment = eventCreateInDto.idComment;
-        events.idFeature = eventCreateInDto.idFeature;
-        events.idRanking = eventCreateInDto.idRanking;
-        events.idEntry = eventCreateInDto.idEntry;
-        events.status = true;
+        events.Name = eventCreateInDto.Name;
+        events.ShortDescription = eventCreateInDto.ShortDescription;
+        events.Description = eventCreateInDto.Description; ;
+        events.DateStart = eventCreateInDto.DateStart;
+        events.DateEnd = eventCreateInDto.DateEnd;
+        events.CreatedAt = eventCreateInDto.CreatedAt;
+        events.TicketPrice = eventCreateInDto.TicketPrice;
+        events.CommentId = eventCreateInDto.CommentId;
+        events.FeatureId = eventCreateInDto.FeatureId;
+        events.RankingId = eventCreateInDto.RankingId;
+        events.EntryId = eventCreateInDto.EntryId;
+        events.Status = true;
         _context.Event.Add(events);
         await _context.SaveChangesAsync();
 
@@ -38,91 +38,78 @@ public class EventService
 
     public async Task<List<EventGetOutDto>> GetAll()
     {
-        List<Event> events = await _context.Event.Where(c=>c.status==true).ToListAsync();
+        List<Event> events = await _context.Event.Where(c => c.Status == true).ToListAsync();
 
         List<EventGetOutDto> eventDto = events.Select(eventGetOutDto => new EventGetOutDto
         {
-            id = eventGetOutDto.id,
-            name=eventGetOutDto.name,
-            short_description=eventGetOutDto.short_description,
-            description=eventGetOutDto.description,
-            date_start=eventGetOutDto.date_start,
-            date_end=eventGetOutDto.date_end,
-            created_at=eventGetOutDto.created_at,
-            ticket_price=eventGetOutDto.ticket_price,
-            idComment=eventGetOutDto.idComment,
-            idFeature=eventGetOutDto.idFeature,
-            idRanking=eventGetOutDto.idRanking,
-            idEntry=eventGetOutDto.idEntry,
-            status=eventGetOutDto.status
+            Id = eventGetOutDto.Id,
+            Name = eventGetOutDto.Name,
+            ShortDescription = eventGetOutDto.ShortDescription,
+            Description = eventGetOutDto.Description,
+            DateStart = eventGetOutDto.DateStart,
+            DateEnd = eventGetOutDto.DateEnd,
+            CreatedAt = eventGetOutDto.CreatedAt,
+            TicketPrice = eventGetOutDto.TicketPrice,
+            CommentId = eventGetOutDto.CommentId,
+            FeatureId = eventGetOutDto.FeatureId,
+            RankingId = eventGetOutDto.RankingId,
+            EntryId = eventGetOutDto.EntryId,
+            Status = eventGetOutDto.Status
 
         }).ToList();
 
         return eventDto;
     }
 
-
-
     public async Task<EventGetOutDto> GetById(int id)
     {
-        Event events = await _context.Event.FirstOrDefaultAsync(c => c.id == id && c.status==true);
+        Event events = await _context.Event.FirstOrDefaultAsync(c => c.Id == id && c.Status == true);
 
         EventGetOutDto result = new EventGetOutDto
         {
-            id = events.id,
-            name = events.name,
-            short_description = events.short_description,
-            description = events.description,
-            date_start =events.date_start,
-            date_end = events.date_end,
-            created_at = events.created_at,
-            ticket_price =events.ticket_price,
-            idComment = events.idComment,
-            idFeature = events.idFeature,
-            idRanking = events.idRanking,
-            idEntry = events.idEntry,
-            status=events.status
+            Id = events.Id,
+            Name = events.Name,
+            ShortDescription = events.ShortDescription,
+            Description = events.Description,
+            DateStart = events.DateStart,
+            DateEnd = events.DateEnd,
+            CreatedAt = events.CreatedAt,
+            TicketPrice = events.TicketPrice,
+            CommentId = events.CommentId,
+            FeatureId = events.FeatureId,
+            RankingId = events.RankingId,
+            EntryId = events.EntryId,
+            Status = events.Status
         };
         return result;
     }
 
-
-
     public async Task<Event> Update(EventUpdateInDtocs eventUpdateInDtocs)
     {
-        Event events = await _context.Event.FindAsync(eventUpdateInDtocs.id);
-        events.name = eventUpdateInDtocs.name;
-        events.short_description = eventUpdateInDtocs.short_description;
-        events.description = eventUpdateInDtocs.description;
-        events.date_start = eventUpdateInDtocs.date_start;
-        events.date_end = eventUpdateInDtocs.date_end;
-        events.created_at = eventUpdateInDtocs.created_at;
-        events.ticket_price = eventUpdateInDtocs.ticket_price;
-        events.idComment = eventUpdateInDtocs.idComment;
-        events.idFeature = eventUpdateInDtocs.idFeature;
-        events.idRanking = eventUpdateInDtocs.idRanking;
-        events.idEntry = eventUpdateInDtocs.idEntry;
+        Event events = await _context.Event.FindAsync(eventUpdateInDtocs.Id);
+        events.Name = eventUpdateInDtocs.Name;
+        events.ShortDescription = eventUpdateInDtocs.ShortDescription;
+        events.Description = eventUpdateInDtocs.Description;
+        events.DateStart = eventUpdateInDtocs.DateStart;
+        events.DateEnd = eventUpdateInDtocs.DateEnd;
+        events.CreatedAt = eventUpdateInDtocs.CreatedAt;
+        events.TicketPrice = eventUpdateInDtocs.TicketPrice;
+        events.CommentId = eventUpdateInDtocs.CommentId;
+        events.FeatureId = eventUpdateInDtocs.FeatureId;
+        events.RankingId = eventUpdateInDtocs.RankingId;
+        events.EntryId = eventUpdateInDtocs.EntryId;
         await _context.SaveChangesAsync();
 
         return events;
 
     }
-
-
 
     public async Task<Event> Delete(int id)
     {
-        Event events = await _context.Event.FirstOrDefaultAsync(c=>c.id==id);
-        events.status = false;
+        Event events = await _context.Event.FirstOrDefaultAsync(c => c.Id == id);
+        events.Status = false;
         await _context.SaveChangesAsync();
 
         return events;
-
     }
-
-
-
-
-
-
 }

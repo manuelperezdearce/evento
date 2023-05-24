@@ -2,31 +2,31 @@
 
 public class EventGetOutDto
 {
-    public int id { get; set; }
+    public int Id { get; set; }
 
-    public string name { get; set; }
+    public string Name { get; set; }
 
-    public string short_description { get; set; }
+    public string ShortDescription { get; set; }
 
-    public string description { get; set; }
+    public string Description { get; set; }
 
-    public DateTime date_start { get; set; }
+    public DateTime DateStart { get; set; }
 
-    public DateTime date_end { get; set; }
+    public DateTime DateEnd { get; set; }
 
-    public DateTime created_at { get; set; }
+    public DateTime CreatedAt { get; set; }
 
-    public float ticket_price { get; set; }
+    public float TicketPrice { get; set; }
 
-    public int idComment { get; set; }
+    public int CommentId { get; set; }
 
-    public int idFeature { get; set; }
+    public int FeatureId { get; set; }
 
-    public int idRanking { get; set; }
+    public int RankingId { get; set; }
 
-    public int idEntry { get; set; }
+    public int EntryId{ get; set; }
 
-    public bool is_active { get; set; }
+    public bool IsActive { get; set; }
 
-    public bool status { get; set; }
+    public bool Status { get; set; }
 }

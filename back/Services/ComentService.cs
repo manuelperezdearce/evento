@@ -18,11 +18,13 @@ public class ComentService
 
     public async Task<Coment> Create(ComentCreateInDto comentCreateInDto)
     {
-        var Coment = new Coment();
-        Coment.description = comentCreateInDto.description;
-        Coment.created_at = comentCreateInDto.created_at;
-        Coment.idUser=comentCreateInDto.idUser;
-        Coment.idEvent = comentCreateInDto.idEvent;
+        var Coment = new Coment
+        {
+            Description = comentCreateInDto.Description,
+            CreatedAt = comentCreateInDto.CreatedAt,
+            UserId = comentCreateInDto.UserId,
+            EventId = comentCreateInDto.EventId
+        };
         _context.Coment.Add(Coment);
         await _context.SaveChangesAsync();
 
@@ -36,11 +38,11 @@ public class ComentService
 
         List<ComentGetOutDto> comentDto = coment.Select(comentgetoutDto => new ComentGetOutDto
         {
-          id=comentgetoutDto.id,
-          description=comentgetoutDto.description,
-          created_at=comentgetoutDto.created_at,
-          idUser = comentgetoutDto.idUser,
-          idEvent =comentgetoutDto.idEvent,  
+          Id=comentgetoutDto.Id,
+          Description=comentgetoutDto.Description,
+          CreatedAt=comentgetoutDto.CreatedAt,
+          UserId = comentgetoutDto.UserId,
+          EventId =comentgetoutDto.EventId,  
        
         }).ToList();
 

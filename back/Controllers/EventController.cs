@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace back.Controllers;
+
 [Route("api/[controller]")]
 [ApiController]
 public class EventController : ControllerBase
@@ -26,7 +27,6 @@ public class EventController : ControllerBase
         return Ok();
     }
 
-
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
@@ -37,8 +37,6 @@ public class EventController : ControllerBase
 
         return Ok(events);
     }
-
-
 
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById(int id)
@@ -51,8 +49,6 @@ public class EventController : ControllerBase
         return Ok(events);
     }
 
-
-
     [HttpPut]
     public async Task<IActionResult> Update(EventUpdateInDtocs eventUpdateInDtocs)
     {
@@ -64,10 +60,6 @@ public class EventController : ControllerBase
 
     }
 
-
-
-
-
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
     {
@@ -76,7 +68,6 @@ public class EventController : ControllerBase
         if (events == null)
 
             return BadRequest("error"); // El evento no se encontró en la base de datos
-        
 
         return Ok(events); // Devolver el evento inactivo
     }
