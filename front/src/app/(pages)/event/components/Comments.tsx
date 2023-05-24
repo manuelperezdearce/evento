@@ -47,7 +47,6 @@ export const Comments = () => {
 
 	const handleSubmit = (e: any) => {
 		e.preventDefault();
-		console.log(form, 'event');
 		setLoading(true);
 		setComments((comments) => [...comments, form]);
 
@@ -60,11 +59,7 @@ export const Comments = () => {
 	};
 
 	return (
-		<Box
-			sx={{
-				textAlign: 'center',
-			}}
-		>
+		<Box>
 			<Typography variant="h5" fontWeight={'600'}>
 				Opiniones
 			</Typography>
