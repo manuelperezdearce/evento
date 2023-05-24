@@ -17,12 +17,12 @@ import Link from "next/link";
 
 const pages = [
   { name: "Home", route: "/" },
-  { name: "Explorar", route: "pages/explore" },
-  { name: "Nosotros", route: "pages/about" },
+  { name: "Explorar", route: "explore" },
+  { name: "Nosotros", route: "about" },
 ];
 const settings = [
-  { name: "Perfil", route: "pages/users" },
-  { name: "Logout", route: "pages/auth" },
+  { name: "Perfil", route: "users" },
+  { name: "Logout", route: "auth" },
 ];
 
 export const Navbar = () => {

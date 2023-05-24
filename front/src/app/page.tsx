@@ -1,7 +1,7 @@
-'use client';
-import { Container } from '@mui/material';
-import { EventCard } from './common/components/EventCard';
-import SliderContainer from './pages/home/components/SliderContainer';
+"use client";
+import { Container } from "@mui/material";
+import { EventCard } from "./common/components/EventCard";
+import SliderContainer from "./(pages)/home/components/SliderContainer";
 
 function getID() {
   return Math.floor(Math.random() * 1000000);
@@ -9,16 +9,16 @@ function getID() {
 
 const sectionArrays = [
   {
-    title: 'Panoramas Hoy',
+    title: "Panoramas Hoy",
     id: getID(),
   },
   {
-    title: 'Destacados',
+    title: "Destacados",
     id: getID(),
   },
 
   {
-    title: 'Próximos 7 días',
+    title: "Próximos 7 días",
     id: getID(),
   },
 ];
@@ -26,7 +26,7 @@ const sectionArrays = [
 export default function Home() {
   return (
     <main>
-      <Container maxWidth="lg" sx={{ mt: '3rem', mb: '3rem' }}>
+      <Container maxWidth="lg" sx={{ mt: "3rem", mb: "3rem" }}>
         {sectionArrays.map((item) => {
           return (
             <SliderContainer key={item.id} sliderTitle={item.title}>
