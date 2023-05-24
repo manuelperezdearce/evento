@@ -3,7 +3,6 @@ import { MuiThemeProvider } from './styles/MuiThemeProvider';
 import './globals.css';
 import { Hero } from './common/components/Hero';
 import { Navbar } from './common/components/Navbar';
-import { Navbar2 } from './common/components/Navbar2';
 import Head from 'next/head';
 import { ContainerBody } from './containers/ContainerBody';
 
@@ -22,7 +21,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 			<body>
 				<MuiThemeProvider>
 					<Navbar />
-					{/* <Navbar2 /> */}
 					<Hero />
 					<ContainerBody>{children}</ContainerBody>
 				</MuiThemeProvider>

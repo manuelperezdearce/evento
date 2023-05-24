@@ -13,7 +13,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { useEffect, useState } from "react";
-import { Link } from "@mui/material";
+import Link from "next/link";
 
 const pages = [
   // { name: 'Home', route: '/' },
@@ -21,7 +21,7 @@ const pages = [
   // { name: 'Nosotros', route: 'pages/about' },
 ];
 const settings = [
-  { name: "Perfil", route: "pages/users" },
+  { name: "Perfil", route: "pages/profile" },
   { name: "Logout", route: "pages/auth" },
 ];
 
@@ -61,6 +61,11 @@ export const Navbar = () => {
         <Toolbar disableGutters sx={{
           justifyContent: 'space-between'
         }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+            <button onClick={() => setLogin(true)}>login</button>
+            <button onClick={() => setLogin(false)}>logout</button>
+          </Box>
+
           <Link href={'/'} style={{ display: 'flex', color: '#fff' }}>
             <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
             <Typography
@@ -116,13 +121,11 @@ export const Navbar = () => {
                   </MenuItem>
                 </Link>
               ))}
-              {LoginOrRegister.map((item) => {
+              {!login ? LoginOrRegister.map((item) => {
                 return (
                   <Link
-                    // href={item.route}
-                    onClick={() => setLogin(true)} sx={{
-                      display: `${login ? "none" : "block"}`
-                    }}>
+                    href={item.route}
+                  >
                     <Button
                       onClick={handleCloseNavMenu}
                       sx={{ my: 2, color: 'primary', display: 'block' }}
@@ -131,7 +134,7 @@ export const Navbar = () => {
                     </Button>
                   </Link>
                 )
-              })}
+              }) : null}
 
             </Menu>
           </Box>
@@ -180,13 +183,11 @@ export const Navbar = () => {
 
           <Box sx={{ flexGrow: 0, display: "flex" }}>
             <Box sx={{ flexGrow: 0, display: { xs: 'none', md: "flex" } }} >
-              {LoginOrRegister.map((item) => {
+              {!login ? LoginOrRegister.map((item) => {
                 return (
                   <Link
-                    // href={item.route}
-                    onClick={() => setLogin(true)} sx={{
-                      display: `${login ? "none" : "block"}`
-                    }}>
+                    href={item.route}
+                  >
                     <Button
                       onClick={handleCloseNavMenu}
                       sx={{ my: 2, color: 'white', display: 'block' }}
@@ -195,7 +196,7 @@ export const Navbar = () => {
                     </Button>
                   </Link>
                 )
-              })}
+              }) : null}
             </Box>
 
 
