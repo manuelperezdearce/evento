@@ -12,6 +12,7 @@ import {
     TextField,
     Typography,
 } from '@mui/material';
+import { styled } from '@mui/system';
 import InfoRoundedIcon from '@mui/icons-material/InfoRounded';
 import CategoryRoundedIcon from '@mui/icons-material/CategoryRounded';
 import ChatRoundedIcon from '@mui/icons-material/ChatRounded';
@@ -20,8 +21,10 @@ import TodayRoundedIcon from '@mui/icons-material/TodayRounded';
 import EventRoundedIcon from '@mui/icons-material/EventRounded';
 import AccessTimeFilledRoundedIcon from '@mui/icons-material/AccessTimeFilledRounded';
 import MonetizationOnRoundedIcon from '@mui/icons-material/MonetizationOnRounded';
-import AddCircleRoundedIcon from '@mui/icons-material/AddCircleRounded';
 import EventAvailableRoundedIcon from '@mui/icons-material/EventAvailableRounded';
+import ImageRoundedIcon from '@mui/icons-material/ImageRounded';
+import PanoramaRoundedIcon from '@mui/icons-material/PanoramaRounded';
+import './styles.css';
 
 export default function createEvent() {
     type TEvent = {
@@ -30,6 +33,8 @@ export default function createEvent() {
         direction: string;
         description: string;
         time: string;
+        image: File | null;
+        backgroundImage: File | null;
         startDate: string;
         endDate: string;
         isFree: boolean;
@@ -43,6 +48,8 @@ export default function createEvent() {
         direction: '',
         description: '',
         time: '',
+        image: null,
+        backgroundImage: null,
         startDate: '',
         endDate: '',
         isFree: false,
@@ -95,7 +102,6 @@ export default function createEvent() {
                             setNewEvent({ ...newEvent, category: newValue })
                         }
                         renderInput={(params) => {
-                            console.log(params);
                             return (
                                 <TextField
                                     {...params}
@@ -132,6 +138,47 @@ export default function createEvent() {
                     }}
                     onChange={handleChange}
                 />
+
+                <Stack gap="2rem" sx={{ flexDirection: { xs: 'column', sm: 'row' } }}>
+                    <TextField
+                        className="fileUpload"
+                        fullWidth
+                        required
+                        label="Imagen"
+                        type="file"
+                        name="image"
+                        inputProps={{ accept: 'image/png, image/jpeg' }}
+                        onChange={handleChange}
+                        sx={{
+                            '::file-selector-button': { backgroundColor: '#000' },
+                        }}
+                        InputProps={{
+                            startAdornment: (
+                                <InputAdornment position="start">
+                                    <ImageRoundedIcon color="primary" />
+                                </InputAdornment>
+                            ),
+                        }}
+                    />
+
+                    <TextField
+                        className="fileUpload"
+                        fullWidth
+                        required
+                        label="Imagen de portada"
+                        type="file"
+                        name="backgroundImage"
+                        inputProps={{ accept: 'image/png, image/jpeg' }}
+                        onChange={handleChange}
+                        InputProps={{
+                            startAdornment: (
+                                <InputAdornment position="start">
+                                    <PanoramaRoundedIcon color="primary" />
+                                </InputAdornment>
+                            ),
+                        }}
+                    />
+                </Stack>
 
                 <TextField
                     required
