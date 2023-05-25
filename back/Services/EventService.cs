@@ -2,6 +2,7 @@
 using back.Dtos.Output.Event;
 using back.Models;
 using Microsoft.EntityFrameworkCore;
+using Slugify;
 
 namespace back.Services;
 
@@ -16,8 +17,11 @@ public class EventService
 
     public async Task<Event> Create(EventCreateInDto eventCreateInDto)
     {
+        var slugHelper = new SlugHelper();
         var events = new Event();
+        //events.Name = slugHelper.GenerateSlug(eventCreateInDto.Name.ToString());
         events.Name = eventCreateInDto.Name;
+        events.Slug = slugHelper.GenerateSlug(events.Name);
         events.ShortDescription = eventCreateInDto.ShortDescription;
         events.Description = eventCreateInDto.Description; ;
         events.DateStart = eventCreateInDto.DateStart;
@@ -40,8 +44,11 @@ public class EventService
     {
         List<Event> events = await _context.Event.Where(c => c.Status == true).ToListAsync();
 
+      
+
         List<EventGetOutDto> eventDto = events.Select(eventGetOutDto => new EventGetOutDto
         {
+
             Id = eventGetOutDto.Id,
             Name = eventGetOutDto.Name,
             ShortDescription = eventGetOutDto.ShortDescription,
@@ -54,16 +61,17 @@ public class EventService
             FeatureId = eventGetOutDto.FeatureId,
             RankingId = eventGetOutDto.RankingId,
             EntryId = eventGetOutDto.EntryId,
-            Status = eventGetOutDto.Status
+            Status = eventGetOutDto.Status,
+            Slug=eventGetOutDto.Slug
 
         }).ToList();
 
         return eventDto;
     }
 
-    public async Task<EventGetOutDto> GetById(int id)
+    public async Task<EventGetOutDto> GetById(string slug)
     {
-        Event events = await _context.Event.FirstOrDefaultAsync(c => c.Id == id && c.Status == true);
+        Event events = await _context.Event.FirstOrDefaultAsync(c => c.Slug == slug && c.Status == true);
 
         EventGetOutDto result = new EventGetOutDto
         {
@@ -79,15 +87,19 @@ public class EventService
             FeatureId = events.FeatureId,
             RankingId = events.RankingId,
             EntryId = events.EntryId,
-            Status = events.Status
+            Status = events.Status,
+            Slug =events.Slug
         };
         return result;
     }
 
     public async Task<Event> Update(EventUpdateInDtocs eventUpdateInDtocs)
     {
+        var slugHelper =new SlugHelper();
+
         Event events = await _context.Event.FindAsync(eventUpdateInDtocs.Id);
         events.Name = eventUpdateInDtocs.Name;
+        events.Slug= slugHelper.GenerateSlug(events.Name);
         events.ShortDescription = eventUpdateInDtocs.ShortDescription;
         events.Description = eventUpdateInDtocs.Description;
         events.DateStart = eventUpdateInDtocs.DateStart;
