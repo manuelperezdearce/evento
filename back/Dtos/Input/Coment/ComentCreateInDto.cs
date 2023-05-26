@@ -3,11 +3,11 @@
 public class ComentCreateInDto
 {
 
-    public string description { get; set; }
+    public string Description { get; set; }
 
-    public DateTime created_at { get; set; }
+    public DateTime CreatedAt { get; set; }
 
-    public int idUser { get; set; }
+    public int UserId { get; set; }
 
-    public int idEvent { get; set; }
+    public int EventId { get; set; }
 }

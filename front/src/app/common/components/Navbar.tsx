@@ -1,41 +1,37 @@
-"use client";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
-import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
-import { useEffect, useState } from "react";
-import Link from "next/link";
+'use client';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import Menu from '@mui/material/Menu';
+import MenuIcon from '@mui/icons-material/Menu';
+import Container from '@mui/material/Container';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import Tooltip from '@mui/material/Tooltip';
+import MenuItem from '@mui/material/MenuItem';
+import AdbIcon from '@mui/icons-material/Adb';
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
 
 const pages = [
-  // { name: 'Home', route: '/' },
-  { name: 'Explorar', route: 'pages/explore' },
-  // { name: 'Nosotros', route: 'pages/about' },
+  { name: 'Home', route: '/' },
+  { name: 'Explorar', route: 'explore' },
+  { name: 'Nosotros', route: 'about' },
 ];
 const settings = [
-  { name: "Perfil", route: "pages/profile" },
-  { name: "Logout", route: "pages/auth" },
+  { name: 'Perfil', route: 'users' },
+  { name: 'Logout', route: 'auth' },
 ];
 
 const LoginOrRegister = [
-  { name: "ingresar", route: "pages/ingresar" },
-  { name: "registrarse", route: "pages/registro" }
-]
+  { name: 'ingresar', route: 'pages/ingresar' },
+  { name: 'registrarse', route: 'pages/registro' },
+];
 
 export const Navbar = () => {
-
-
-
-
-  const [login, setLogin] = useState<boolean>(false)
+  const [login, setLogin] = useState<boolean>(false);
   const [domLoaded, setDomLoaded] = useState(false);
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
@@ -58,9 +54,12 @@ export const Navbar = () => {
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
-        <Toolbar disableGutters sx={{
-          justifyContent: 'space-between'
-        }}>
+        <Toolbar
+          disableGutters
+          sx={{
+            justifyContent: 'space-between',
+          }}
+        >
           <Box sx={{ display: 'flex', flexDirection: 'column' }}>
             <button onClick={() => setLogin(true)}>login</button>
             <button onClick={() => setLogin(false)}>logout</button>
@@ -121,24 +120,22 @@ export const Navbar = () => {
                   </MenuItem>
                 </Link>
               ))}
-              {!login ? LoginOrRegister.map((item) => {
-                return (
-                  <Link
-                    href={item.route}
-                  >
-                    <Button
-                      onClick={handleCloseNavMenu}
-                      sx={{ my: 2, color: 'primary', display: 'block' }}
-                    >
-                      {item.name}
-                    </Button>
-                  </Link>
-                )
-              }) : null}
-
+              {!login
+                ? LoginOrRegister.map((item) => {
+                    return (
+                      <Link href={item.route}>
+                        <Button
+                          onClick={handleCloseNavMenu}
+                          sx={{ my: 2, color: 'primary', display: 'block' }}
+                        >
+                          {item.name}
+                        </Button>
+                      </Link>
+                    );
+                  })
+                : null}
             </Menu>
           </Box>
-
 
           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
 
@@ -181,30 +178,34 @@ export const Navbar = () => {
             </Button>
           </Box>
 
-          <Box sx={{ flexGrow: 0, display: "flex" }}>
-            <Box sx={{ flexGrow: 0, display: { xs: 'none', md: "flex" } }} >
-              {!login ? LoginOrRegister.map((item) => {
-                return (
-                  <Link
-                    href={item.route}
-                  >
-                    <Button
-                      onClick={handleCloseNavMenu}
-                      sx={{ my: 2, color: 'white', display: 'block' }}
-                    >
-                      {item.name}
-                    </Button>
-                  </Link>
-                )
-              }) : null}
+          <Box sx={{ flexGrow: 0, display: 'flex' }}>
+            <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
+              {!login
+                ? LoginOrRegister.map((item) => {
+                    return (
+                      <Link href={item.route}>
+                        <Button
+                          onClick={handleCloseNavMenu}
+                          sx={{ my: 2, color: 'white', display: 'block' }}
+                        >
+                          {item.name}
+                        </Button>
+                      </Link>
+                    );
+                  })
+                : null}
             </Box>
 
-
-            <Box sx={{
-              display: `${login ? 'block' : 'none'}`
-            }}>
+            <Box
+              sx={{
+                display: `${login ? 'block' : 'none'}`,
+              }}
+            >
               <Tooltip title="Open settings">
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: "0 0 0 8px" }}>
+                <IconButton
+                  onClick={handleOpenUserMenu}
+                  sx={{ p: '0 0 0 8px' }}
+                >
                   <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
                 </IconButton>
               </Tooltip>
@@ -236,6 +237,6 @@ export const Navbar = () => {
           </Box>
         </Toolbar>
       </Container>
-    </AppBar >
+    </AppBar>
   );
 };

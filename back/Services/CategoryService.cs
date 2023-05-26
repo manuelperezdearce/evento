@@ -16,10 +16,12 @@ public class CategoryService
 
     public async Task<Category> Create(CategoryCreateInDto categoryDto)
     {
-        var Category = new Category();
-        Category.name = categoryDto.name;
-        Category.description = categoryDto.description;
-        Category.type = categoryDto.type;
+        var Category = new Category
+        {
+            Name = categoryDto.Name,
+            Description = categoryDto.Description,
+            Type = categoryDto.Type
+        };
         _context.Category.Add(Category);
         await _context.SaveChangesAsync();
 
@@ -32,10 +34,10 @@ public class CategoryService
 
         List<CategoryGetOutDto> categoriesDto = categories.Select(gellcategoryDto => new CategoryGetOutDto
         {
-            id = gellcategoryDto.id,
-            name = gellcategoryDto.name,
-            description = gellcategoryDto.description,
-            type = gellcategoryDto.type
+            Id = gellcategoryDto.Id,
+            Name = gellcategoryDto.Name,
+            Description = gellcategoryDto.Description,
+            Type = gellcategoryDto.Type
         }).ToList();
 
         return categoriesDto;
@@ -43,13 +45,13 @@ public class CategoryService
 
     public async Task<CategoryGetOutDto> GetById(int id)
     {
-        Category category = await _context.Category.FirstOrDefaultAsync(c => c.id == id);
+        Category category = await _context.Category.FirstOrDefaultAsync(c => c.Id == id);
 
         CategoryGetOutDto result = new CategoryGetOutDto
         {
-            id = category.id,
-            name = category.name,
-            type = category.type
+            Id = category.Id,
+            Name = category.Name,
+            Type = category.Type
         };
         return result;
     }
@@ -57,10 +59,10 @@ public class CategoryService
 
     public async Task<Category>Update(CategoryUpdateInDto categoryUpdateInDto)
     {
-        Category category = await _context.Category.FindAsync(categoryUpdateInDto.id);
-        category.name=categoryUpdateInDto.name;
-        category.description=categoryUpdateInDto.description;
-        category.type = categoryUpdateInDto.type;
+        Category category = await _context.Category.FindAsync(categoryUpdateInDto.Id);
+        category.Name = categoryUpdateInDto.Name;
+        category.Description=categoryUpdateInDto.Description;
+        category.Type = categoryUpdateInDto.Type;
 
         await _context.SaveChangesAsync();
 

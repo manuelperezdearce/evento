@@ -8,19 +8,19 @@ public class Category
 {
 
     [Key]
-    public int id { get; set; }
+    public int Id { get; set; }
     [DisplayName("Nombre")]
     [Required(ErrorMessage = "ingrese el nombre")]
     [Column(TypeName = "varchar(200)")]
-    public string name { get; set; }
+    public string Name { get; set; }
 
     [DisplayName("Descripcion")]
     [Required(ErrorMessage = "ingrese la descripcion")]
     [Column(TypeName = "varchar(200)")]
-    public string description { get; set; }
+    public string Description { get; set; }
 
     [DisplayName("Tipo")]
     [Required(ErrorMessage ="Ingrese el tipo")]
     [Column(TypeName = "varchar(200)")]
-    public string type { get; set; }
+    public string Type { get; set; }
 }

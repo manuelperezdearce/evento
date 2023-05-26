@@ -12,5 +12,6 @@ public class AppDbContext : DbContext
     public DbSet<Category> Category { get; set; }
 
     public DbSet<Coment>Coment { get; set; }
+    public DbSet<Event> Event { get; set; }
 
 }
