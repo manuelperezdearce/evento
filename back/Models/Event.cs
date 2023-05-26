@@ -40,4 +40,6 @@ public class Event
     public bool IsActive { get; set; }
 
     public bool Status { get; set; }
+
+    public string Slug { get; set; }
 }
