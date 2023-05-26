@@ -41,20 +41,24 @@ function a11yProps(index: any) {
     };
 }
 
+const userData = {
+    id: getID().toString,
+    name: 'Arnold',
+    lastname: 'Schwarzenegger',
+    org: 'Bar Los Bakanes',
+    imgURL: 'userimg.jpg',
+    coordinator: true,
+    whatsappURL: 'https://web.whatsapp.com/',
+    instagramURL: 'https://instagram.com/',
+    personalURL: 'https://www.mycompany.com'
 
-// const useStyles = makeStyles((theme: Theme) => ({
-//     root: {
-//         flexGrow: 1,
-//         backgroundColor: theme.palette.background.paper,
-//     },
-// }));
+}
 
 
 export default function Profile() {
 
-    // const classes = useStyles();
-    const [value, setValue] = React.useState(0);
 
+    const [value, setValue] = React.useState(0);
     const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
         setValue(newValue);
     };
@@ -64,7 +68,7 @@ export default function Profile() {
         <Container maxWidth="lg" sx={{ mt: "3rem", mb: "3rem" }}>
             <Stack spacing={3}>
                 <Stack direction={'row'} justifyContent={"space-between"} flexWrap={"wrap"} gap={3}>
-                    <Stack direction={'row'} justifyContent={"space-between"} gap={3} >
+                    <Stack direction={'row'} justifyContent={{ xs: 'center', md: "space-between" }} textAlign={{ xs: "center", sm: 'start' }} alignItems={"center"} gap={3} flexWrap={"wrap"} >
                         <Avatar alt="user.name"
                             src="/userimg.jpg"
                             sx={{ width: 100, height: 100 }} />
@@ -77,18 +81,25 @@ export default function Profile() {
                     <Button variant="contained" sx={{ margin: 'auto 0 auto auto' }}>Crear Evento</Button>
                 </Stack>
                 <Box>
-                    <AppBar position="static" color="secondary" variant="elevation">
-                        <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
-                            <Tab label="Mis eventos" {...a11yProps(0)} />
-                            <Tab label="Perfil" {...a11yProps(1)} />
+                    <AppBar position="static" color="transparent" sx={{
+                        boxShadow: 'none'
+                    }}  >
+                        <Tabs value={value} textColor="primary" centered onChange={handleChange} aria-label="simple tabs example">
+                            <Tab label="Perfil" sx={{
+                                fontSize: '20px'
+                            }} {...a11yProps(0)} />
+                            <Tab label="Mis Eventos" sx={{
+                                fontSize: '20px'
+                            }} {...a11yProps(1)} />
                         </Tabs>
                     </AppBar>
                     <TabPanel value={value} index={0}>
-                        <EventList />
-                    </TabPanel>
-                    <TabPanel value={value} index={1}>
                         <UserForm />
                     </TabPanel>
+                    <TabPanel value={value} index={1}>
+                        <EventList />
+                    </TabPanel>
+
                 </Box>
             </Stack>
         </Container >
