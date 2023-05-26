@@ -1,13 +1,4 @@
-import {
-    Box,
-    Card,
-    CardContent,
-    CardMedia,
-    Chip,
-    Link,
-    Stack,
-    Typography,
-} from '@mui/material';
+import { Stack, Typography } from '@mui/material';
 import Icons from '../theme/icons';
 
 export default function Footer() {
