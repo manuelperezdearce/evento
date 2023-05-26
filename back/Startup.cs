@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-
+using AutoMapper;
 namespace back;
 public class Startup
 {
@@ -23,7 +23,7 @@ public class Startup
         });
 
         services.AddControllers();
-
+        services.AddAutoMapper(typeof(Startup));
 
         services.AddSwaggerGen(c =>
         {
@@ -36,6 +36,7 @@ public class Startup
         services.AddScoped<Services.CategoryService>();
         services.AddScoped<Services.ComentService>();
         services.AddScoped<Services.EventService>();
+       
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

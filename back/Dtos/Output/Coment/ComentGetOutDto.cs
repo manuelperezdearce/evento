@@ -1,4 +1,6 @@
-﻿namespace back.Dtos.Output.Coment;
+﻿using back.Dtos.Output.User;
+
+namespace back.Dtos.Output.Coment;
 
 public class ComentGetOutDto
 {
@@ -11,5 +13,8 @@ public class ComentGetOutDto
     public int UserId { get; set; }
 
     public int EventId { get; set; }
+
+    public UserGetOutDto User { get; set; }
+  
 
 }
