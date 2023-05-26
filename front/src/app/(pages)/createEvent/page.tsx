@@ -328,6 +328,9 @@ export default function createEvent() {
                                 <OutlinedInput
                                     sx={{ '> fieldset > legend': { width: '8rem' } }}
                                     label="Chip"
+                                    startAdornment=<InputAdornment position="start">
+                                        <Icons.LabelRoundedIcon color="primary" />
+                                    </InputAdornment>
                                 />
                             }
                             renderValue={(selected) => (
