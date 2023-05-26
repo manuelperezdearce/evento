@@ -9,19 +9,23 @@ import MonetizationOnRoundedIcon from '@mui/icons-material/MonetizationOnRounded
 import EventAvailableRoundedIcon from '@mui/icons-material/EventAvailableRounded';
 import ImageRoundedIcon from '@mui/icons-material/ImageRounded';
 import PanoramaRoundedIcon from '@mui/icons-material/PanoramaRounded';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import FacebookIcon from '@mui/icons-material/Facebook';
 
 const Icons = {
-  InfoRoundedIcon: InfoRoundedIcon,
-  CategoryRoundedIcon: CategoryRoundedIcon,
-  ChatRoundedIcon: ChatRoundedIcon,
-  PlaceRoundedIcon: PlaceRoundedIcon,
-  TodayRoundedIcon: TodayRoundedIcon,
-  EventRoundedIcon: EventRoundedIcon,
-  AccessTimeFilledRoundedIcon: AccessTimeFilledRoundedIcon,
-  MonetizationOnRoundedIcon: MonetizationOnRoundedIcon,
-  EventAvailableRoundedIcon: EventAvailableRoundedIcon,
-  ImageRoundedIcon: ImageRoundedIcon,
-  PanoramaRoundedIcon: PanoramaRoundedIcon,
+    InfoRoundedIcon: InfoRoundedIcon,
+    CategoryRoundedIcon: CategoryRoundedIcon,
+    ChatRoundedIcon: ChatRoundedIcon,
+    PlaceRoundedIcon: PlaceRoundedIcon,
+    TodayRoundedIcon: TodayRoundedIcon,
+    EventRoundedIcon: EventRoundedIcon,
+    AccessTimeFilledRoundedIcon: AccessTimeFilledRoundedIcon,
+    MonetizationOnRoundedIcon: MonetizationOnRoundedIcon,
+    EventAvailableRoundedIcon: EventAvailableRoundedIcon,
+    ImageRoundedIcon: ImageRoundedIcon,
+    PanoramaRoundedIcon: PanoramaRoundedIcon,
+    InstagramIcon: InstagramIcon,
+    FacebookIcon: FacebookIcon,
 };
 
 export default Icons;
