@@ -5,15 +5,15 @@ namespace back.Models;
 public class Images
 {
     [Key]
-    public int id { get; set; }
+    public int Id { get; set; }
 
-    public string url1 { get; set; }
-
-
-    public string url2 { get; set; }
+    public string Url1 { get; set; }
 
 
-    public int url3 { get; set; }
+    public string Url2 { get; set; }
+
+
+    public int Url3 { get; set; }
 
 
 

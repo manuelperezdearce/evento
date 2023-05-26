@@ -1,10 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿namespace back.Dtos.Input.Event;
 
-namespace back.Models;
-
-public class Event
+public class EventUpdateInDtocs
 {
-    [Key]
     public int Id { get; set; }
 
     public string Name { get; set; }
@@ -17,7 +14,7 @@ public class Event
 
     public DateTime DateEnd { get; set; }
 
-    public DateTime CreatedAt{ get; set; }
+    public DateTime CreatedAt { get; set; }
 
     public float TicketPrice { get; set; }
 
@@ -29,17 +26,5 @@ public class Event
 
     public int EntryId { get; set; }
 
-    public Coment Coment { get; set; }  
-
-    public Feature Feature { get; set; }
-
-    public Ranking Ranking { get; set; }
-
-    public Entry Entry { get; set; }
-
-    public bool IsActive { get; set; }
-
-    public bool Status { get; set; }
-
-    public string Slug { get; set; }
+    public bool IsActive{ get; set; }
 }

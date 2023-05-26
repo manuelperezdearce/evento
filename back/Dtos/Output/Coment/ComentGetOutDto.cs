@@ -2,13 +2,14 @@
 
 public class ComentGetOutDto
 {
-    public int id { get; set; } 
-    public string description { get; set; }
+    public int Id { get; set; } 
 
-    public DateTime created_at { get; set; }
+    public string Description { get; set; }
 
-    public int idUser { get; set; }
+    public DateTime CreatedAt { get; set; }
 
-    public int idEvent { get; set; }
+    public int UserId { get; set; }
+
+    public int EventId { get; set; }
 
 }
