@@ -12,7 +12,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 
 const pages = [
@@ -26,13 +26,12 @@ const settings = [
 ];
 
 const LoginOrRegister = [
-  { name: 'ingresar', route: 'pages/ingresar' },
-  { name: 'registrarse', route: 'pages/registro' },
+  { name: 'ingresar', route: 'login' },
+  { name: 'registrarse', route: 'register' },
 ];
 
 export const Navbar = () => {
   const [login, setLogin] = useState<boolean>(false);
-  const [domLoaded, setDomLoaded] = useState(false);
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
 
@@ -122,17 +121,17 @@ export const Navbar = () => {
               ))}
               {!login
                 ? LoginOrRegister.map((item) => {
-                    return (
-                      <Link href={item.route}>
-                        <Button
-                          onClick={handleCloseNavMenu}
-                          sx={{ my: 2, color: 'primary', display: 'block' }}
-                        >
-                          {item.name}
-                        </Button>
-                      </Link>
-                    );
-                  })
+                  return (
+                    <Link href={item.route}>
+                      <Button
+                        onClick={handleCloseNavMenu}
+                        sx={{ my: 2, color: 'primary', display: 'block' }}
+                      >
+                        {item.name}
+                      </Button>
+                    </Link>
+                  );
+                })
                 : null}
             </Menu>
           </Box>
@@ -182,17 +181,17 @@ export const Navbar = () => {
             <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
               {!login
                 ? LoginOrRegister.map((item) => {
-                    return (
-                      <Link href={item.route}>
-                        <Button
-                          onClick={handleCloseNavMenu}
-                          sx={{ my: 2, color: 'white', display: 'block' }}
-                        >
-                          {item.name}
-                        </Button>
-                      </Link>
-                    );
-                  })
+                  return (
+                    <Link href={item.route}>
+                      <Button
+                        onClick={handleCloseNavMenu}
+                        sx={{ my: 2, color: 'white', display: 'block' }}
+                      >
+                        {item.name}
+                      </Button>
+                    </Link>
+                  );
+                })
                 : null}
             </Box>
 
