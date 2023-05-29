@@ -44,7 +44,8 @@ public class EventGetOutDto
 
     //public UserGetOutDto User { get; set; }
 
-    
+
+    public string Slug { get; set; }
 }
 
 

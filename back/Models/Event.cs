@@ -44,15 +44,16 @@ public class Event
 
     public bool Status { get; set; }
 
-    public string prueba { get; set; }   
+    public string prueba { get; set; }
 
     public Event()
     {
 
         Coment= new HashSet<Coment>();
-     
+
     }
 
-    
-    
+
+
+    public string Slug { get; set; }
 }

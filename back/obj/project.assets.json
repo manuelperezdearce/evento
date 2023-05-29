@@ -568,6 +568,19 @@
           "lib/netstandard2.0/Mono.TextTemplating.dll": {}
         }
       },
+      "Slugify.Core/4.0.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Memory": "4.5.5",
+          "System.Text.Encoding.CodePages": "6.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Slugify.Core.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Slugify.Core.dll": {}
+        }
+      },
       "Swashbuckle.AspNetCore/6.5.0": {
         "type": "package",
         "dependencies": {
@@ -591,9 +604,7 @@
         "runtime": {
           "lib/net6.0/Swashbuckle.AspNetCore.Swagger.dll": {}
         },
-        "frameworkReferences": [
-          "Microsoft.AspNetCore.App"
-        ]
+        "frameworkReferences": ["Microsoft.AspNetCore.App"]
       },
       "Swashbuckle.AspNetCore.SwaggerGen/6.5.0": {
         "type": "package",
@@ -615,9 +626,7 @@
         "runtime": {
           "lib/net6.0/Swashbuckle.AspNetCore.SwaggerUI.dll": {}
         },
-        "frameworkReferences": [
-          "Microsoft.AspNetCore.App"
-        ]
+        "frameworkReferences": ["Microsoft.AspNetCore.App"]
       },
       "System.CodeDom/4.4.0": {
         "type": "package",
@@ -706,7 +715,7 @@
           "lib/net6.0/System.IdentityModel.Tokens.Jwt.dll": {}
         }
       },
-      "System.Memory/4.5.4": {
+      "System.Memory/4.5.5": {
         "type": "package",
         "compile": {
           "ref/netcoreapp2.1/_._": {}
@@ -2195,6 +2204,20 @@
         "mono.texttemplating.nuspec"
       ]
     },
+    "Slugify.Core/4.0.1": {
+      "sha512": "0YKMECQGdi7O4T1SL1IFaXWSPJdXNFMoGUdxMPsqI+TBuKlhiTD7mBxRH8gd9WD3MJSTEqyF0WsGl7l+NpoXXA==",
+      "type": "package",
+      "path": "slugify.core/4.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "icon.png",
+        "lib/netstandard2.0/Slugify.Core.dll",
+        "slugify.core.4.0.1.nupkg.sha512",
+        "slugify.core.nuspec"
+      ]
+    },
     "Swashbuckle.AspNetCore/6.5.0": {
       "sha512": "FK05XokgjgwlCI6wCT+D4/abtQkL1X1/B9Oas6uIwHFmYrIO9WUD5aLC9IzMs9GnHfUXOtXZ2S43gN1mhs5+aA==",
       "type": "package",
@@ -2436,10 +2459,10 @@
         "system.identitymodel.tokens.jwt.nuspec"
       ]
     },
-    "System.Memory/4.5.4": {
-      "sha512": "1MbJTHS1lZ4bS4FmsJjnuGJOu88ZzTT2rLvrhW7Ygic+pC0NWA+3hgAen0HRdsocuQXCkUTdFn9yHJJhsijDXw==",
+    "System.Memory/4.5.5": {
+      "sha512": "XIWiDvKPXaTveaB7HVganDlOCRoj03l+jrwNvcge/t8vhGYKvqV+dMv6G4SAX2NoNmN0wZfVPTAlFwZcZvVOUw==",
       "type": "package",
-      "path": "system.memory/4.5.4",
+      "path": "system.memory/4.5.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2453,7 +2476,7 @@
         "lib/netstandard2.0/System.Memory.dll",
         "lib/netstandard2.0/System.Memory.xml",
         "ref/netcoreapp2.1/_._",
-        "system.memory.4.5.4.nupkg.sha512",
+        "system.memory.4.5.5.nupkg.sha512",
         "system.memory.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -3189,6 +3212,7 @@
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 12.0.1",
       "Microsoft.EntityFrameworkCore.SqlServer >= 8.0.0-preview.3.23174.2",
       "Microsoft.EntityFrameworkCore.Tools >= 8.0.0-preview.3.23174.2",
+      "Slugify.Core >= 4.0.1",
       "Swashbuckle.AspNetCore >= 6.5.0"
     ]
   },
@@ -3208,9 +3232,7 @@
         "C:\\Users\\LAPTOP HPP\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
-      "originalTargetFrameworks": [
-        "net6.0"
-      ],
+      "originalTargetFrameworks": ["net6.0"],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
@@ -3222,9 +3244,7 @@
         }
       },
       "warningProperties": {
-        "warnAsError": [
-          "NU1605"
-        ]
+        "warnAsError": ["NU1605"]
       }
     },
     "frameworks": {
@@ -3249,19 +3269,16 @@
             "target": "Package",
             "version": "[8.0.0-preview.3.23174.2, )"
           },
+          "Slugify.Core": {
+            "target": "Package",
+            "version": "[4.0.1, )"
+          },
           "Swashbuckle.AspNetCore": {
             "target": "Package",
             "version": "[6.5.0, )"
           }
         },
-        "imports": [
-          "net461",
-          "net462",
-          "net47",
-          "net471",
-          "net472",
-          "net48"
-        ],
+        "imports": ["net461", "net462", "net47", "net471", "net472", "net48"],
         "assetTargetFallback": true,
         "warn": true,
         "frameworkReferences": {
