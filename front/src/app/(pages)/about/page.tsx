@@ -1,5 +1,12 @@
 "use client";
-import { Box, Container, Typography, TextField, Button } from "@mui/material";
+import {
+  Box,
+  Container,
+  Typography,
+  TextField,
+  Button,
+  CardMedia,
+} from "@mui/material";
 import Link from "next/link";
 import React, { createRef, useRef, useState } from "react";
 import "./style.css";
@@ -30,10 +37,58 @@ export default function AboutUs() {
     e.preventDefault();
   };
 
+  const aboutSectionData = [
+    {
+      title: " Quienes Somos?",
+      text: " Brindamos un pequeño espacio para mostrar y dar a conocer eventos de entretenimiento y osio. Desarrollado por un grupo de desarrollo en country con el fin de aprender el trabajo en equipo y metodologias agiles.",
+      image: "https://i.imgur.com/YBXr7XP.png",
+    },
+    {
+      title: " Nuestra mision",
+      image: "https://i.imgur.com/YBXr7XP.png",
+      text: " La Aplicacion EventTo tiene como misión: “Transmitir y dar a conocer eventos de entretenimiento y osio a nuestros clientes…….",
+    },
+    {
+      title: " Nuestra Vision",
+      image: "https://i.imgur.com/YBXr7XP.png",
+      text: " La Aplicacion EventTo tiene como Vsion: “En el 2026 ser un aplicativo web líder de eventos de entretenimiento a nivel latinoamerica…….",
+    },
+  ];
+
   return (
-    <main>
+    <Container sx={{ padding: "0 24px" }}>
       <div className="info">
-        <h1>About Us </h1>
+        {aboutSectionData.map(({ title, text, image }, index) => {
+          return (
+            <Box
+              sx={{
+                display: "flex",
+                margin: "10rem 0",
+                justifyContent: "space-between",
+                flexFlow: `${index % 2 === 0 ? "row" : "row-reverse"}`,
+              }}
+            >
+              <Box sx={{ width: "50%" }}>
+                <Typography
+                  variant="h3"
+                  color="primary"
+                  sx={{ fontWeight: "bold" }}
+                >
+                  {title}
+                </Typography>
+                <Typography variant="body1">{text}</Typography>
+              </Box>
+              <CardMedia
+                sx={{
+                  height: 140,
+                  width: 340,
+                }}
+                image={image}
+                title="green iguana"
+              />
+            </Box>
+          );
+        })}
       </div>
       <Box sx={{ position: "relative" }}>
         <Container>
@@ -114,6 +169,6 @@ export default function AboutUs() {
           </Box>
         </Container>
       </Box>
-    </main>
+    </Container>
   );
 }
