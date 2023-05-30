@@ -1,5 +1,11 @@
-﻿using back.Dtos.Input.Event;
+﻿using AutoMapper;
+using back.Dtos.Input.Event;
+using back.Dtos.Output.Coment;
+using back.Dtos.Output.Entry;
 using back.Dtos.Output.Event;
+using back.Dtos.Output.Feature;
+using back.Dtos.Output.Ranking;
+using back.Mapper;
 using back.Models;
 using Microsoft.EntityFrameworkCore;
 using Slugify;
@@ -44,7 +50,7 @@ public class EventService
     {
         List<Event> events = await _context.Event.Where(c => c.Status == true).ToListAsync();
 
-      
+
 
         List<EventGetOutDto> eventDto = events.Select(eventGetOutDto => new EventGetOutDto
         {
@@ -73,8 +79,23 @@ public class EventService
     {
         Event events = await _context.Event.FirstOrDefaultAsync(c => c.Slug == slug && c.Status == true);
 
-        EventGetOutDto result = new EventGetOutDto
+        //Event events = await _context.Event.FirstOrDefaultAsync(c => c.Id == id && c.Status == true);
+        Event events = await _context.Event
+            .Include(e=>e.Coment)
+            .ThenInclude(e=>e.User)
+            .Include(e => e.Feature)
+            .Include(e => e.Ranking)
+            .Include(e => e.Entry)
+           .FirstOrDefaultAsync(c => c.Id == id && c.Status == true);
+
+        IMapper mapper = new MapperConfiguration(cfg =>
         {
+            cfg.AddProfile<EventMappingProfile>(); // Agrega tu perfil de mapeo personalizado
+        }).CreateMapper();
+
+        EventGetOutDto result = mapper.Map<EventGetOutDto>(events);
+
+
             Id = events.Id,
             Name = events.Name,
             ShortDescription = events.ShortDescription,
