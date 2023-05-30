@@ -1,5 +1,4 @@
 'use client';
-import { useState } from 'react';
 import {
     Autocomplete,
     Box,
@@ -14,17 +13,17 @@ import {
     MenuItem,
     OutlinedInput,
     Select,
-    SelectChangeEvent,
     Stack,
     TextField,
     Typography,
 } from '@mui/material';
-import { TEventForm } from '@/app/common/types/forms';
 import Icons from '../../common/theme/icons';
 import './styles.css';
+import { useForms } from '../../common/hooks/useForms';
+import { categories, eventTags } from '@/app/common/constants/mockData';
 
 export default function createEvent() {
-    const [newEvent, setNewEvent] = useState<TEventForm>({
+    const { handleChange, fields, handleSelect, handleCheck, handleFile } = useForms({
         name: '',
         category: '',
         tags: [],
@@ -40,48 +39,12 @@ export default function createEvent() {
         price: 0,
     });
 
-    const handleSelectChange = (event: SelectChangeEvent<string[]>) => {
-        const selectedValues = event.target.value as string[];
-        setNewEvent({ ...newEvent, tags: selectedValues });
-    };
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const obj = { ...newEvent, [e.target.name]: e.target.value };
-        setNewEvent(obj);
-    };
+    const tags = fields.tags as number[];
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log(newEvent);
+        console.log(fields);
     };
-
-    const mock = [
-        'Conciertos',
-        'Festivales',
-        'Teatro',
-        'Cine',
-        'Deportes',
-        'Arte y Cultura',
-        'Fiestas',
-        'Comedia',
-        'Gastronomía',
-        'Aventura',
-        'Juegos',
-        'Exposiciones',
-    ];
-
-    const eventTags = [
-        'Estacionamiento',
-        'Comida y bebida',
-        'Zona de juegos',
-        'Baños',
-        'Accesibilidad',
-        'Seguridad',
-        'Guardería',
-        'Área de descanso',
-        'Wi-Fi',
-        'Merchandising',
-    ];
 
     return (
         <Box paddingY="2rem">
@@ -94,7 +57,7 @@ export default function createEvent() {
             <Stack component="form" gap="2rem" onSubmit={handleSubmit}>
                 <Stack gap="2rem" sx={{ flexDirection: { xs: 'column', sm: 'row' } }}>
                     <TextField
-                        required
+                        // required
                         fullWidth
                         name="name"
                         label="Nombre"
@@ -111,10 +74,8 @@ export default function createEvent() {
                     <Autocomplete
                         fullWidth
                         disablePortal
-                        options={mock}
-                        onChange={(event, newValue) =>
-                            setNewEvent({ ...newEvent, category: newValue })
-                        }
+                        options={categories}
+                        onChange={(e, value) => handleSelect(e, value)}
                         renderInput={(params) => {
                             return (
                                 <TextField
@@ -122,7 +83,7 @@ export default function createEvent() {
                                     InputProps={{
                                         ...params.InputProps,
                                         name: 'category',
-                                        required: true,
+                                        // required: true,
                                         startAdornment: (
                                             <InputAdornment position="start">
                                                 <Icons.CategoryRoundedIcon color="primary" />
@@ -138,7 +99,7 @@ export default function createEvent() {
                 </Stack>
 
                 <TextField
-                    required
+                    // required
                     name="direction"
                     label="Dirección"
                     placeholder="43 Newport Lane
@@ -157,12 +118,12 @@ export default function createEvent() {
                     <TextField
                         className="fileUpload"
                         fullWidth
-                        required
+                        // required
                         label="Imagen"
                         type="file"
                         name="image"
                         inputProps={{ accept: 'image/png, image/jpeg' }}
-                        onChange={handleChange}
+                        onChange={(e) => handleFile('image', e)}
                         sx={{
                             '::file-selector-button': { backgroundColor: '#000' },
                         }}
@@ -178,12 +139,12 @@ export default function createEvent() {
                     <TextField
                         className="fileUpload"
                         fullWidth
-                        required
+                        // required
                         label="Imagen de portada"
                         type="file"
                         name="backgroundImage"
                         inputProps={{ accept: 'image/png, image/jpeg' }}
-                        onChange={handleChange}
+                        onChange={(e) => handleFile('backgroundImage', e)}
                         InputProps={{
                             startAdornment: (
                                 <InputAdornment position="start">
@@ -195,7 +156,7 @@ export default function createEvent() {
                 </Stack>
 
                 <TextField
-                    required
+                    // required
                     multiline
                     minRows={5}
                     name="description"
@@ -214,7 +175,7 @@ export default function createEvent() {
                 />
                 <Stack gap="2rem" sx={{ flexDirection: { xs: 'column', sm: 'row' } }}>
                     <TextField
-                        required
+                        // required
                         name="time"
                         label="Hora"
                         type="time"
@@ -229,7 +190,7 @@ export default function createEvent() {
                         onChange={handleChange}
                     />
                     <TextField
-                        required
+                        // required
                         name="startDate"
                         label="Fecha de inicio"
                         type="date"
@@ -244,7 +205,7 @@ export default function createEvent() {
                         onChange={handleChange}
                     />
                     <TextField
-                        required
+                        // required
                         name="endDate"
                         label="Decha de fin"
                         type="date"
@@ -273,12 +234,7 @@ export default function createEvent() {
                             }
                             label="Solo adultos"
                             sx={{ '& .MuiFormControlLabel-label': { width: '6rem' } }}
-                            onChange={() =>
-                                setNewEvent({
-                                    ...newEvent,
-                                    onlyAdults: !newEvent.onlyAdults,
-                                })
-                            }
+                            onChange={handleCheck}
                         />
                     </FormGroup>
                     <FormGroup>
@@ -291,16 +247,10 @@ export default function createEvent() {
                                 />
                             }
                             label="Gratis"
-                            onChange={() =>
-                                setNewEvent({
-                                    ...newEvent,
-                                    isFree: !newEvent.isFree,
-                                    price: 0,
-                                })
-                            }
+                            onChange={handleCheck}
                         />
                     </FormGroup>
-                    {!newEvent.isFree && (
+                    {!fields.isFree && (
                         <TextField
                             name="price"
                             label="Precio"
@@ -320,10 +270,10 @@ export default function createEvent() {
                         <InputLabel>Seleccionar atributos</InputLabel>
                         <Select
                             multiple
-                            required
+                            // required
                             name="tags"
-                            value={newEvent.tags}
-                            onChange={handleSelectChange}
+                            value={tags}
+                            onChange={handleChange}
                             input={
                                 <OutlinedInput
                                     sx={{ '> fieldset > legend': { width: '8rem' } }}
@@ -333,15 +283,32 @@ export default function createEvent() {
                                     </InputAdornment>
                                 />
                             }
-                            renderValue={(selected) => (
-                                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
-                                    {selected.map((value) => (
-                                        <Chip key={value} label={value} />
-                                    ))}
-                                </Box>
-                            )}>
+                            renderValue={(selected: number[]) => {
+                                return (
+                                    <Box
+                                        sx={{
+                                            display: 'flex',
+                                            flexWrap: 'wrap',
+                                            gap: 0.5,
+                                        }}>
+                                        {selected?.map((value) => {
+                                            const selectedItem = eventTags.find(
+                                                (item) => item.id === value
+                                            );
+                                            return (
+                                                <Chip
+                                                    key={value}
+                                                    label={selectedItem?.name}
+                                                />
+                                            );
+                                        })}
+                                    </Box>
+                                );
+                            }}>
                             {eventTags.map((item) => (
-                                <MenuItem value={item}>{item}</MenuItem>
+                                <MenuItem key={item.id} value={item.id}>
+                                    {item.name}
+                                </MenuItem>
                             ))}
                         </Select>
                     </FormControl>
