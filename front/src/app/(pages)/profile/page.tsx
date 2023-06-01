@@ -2,6 +2,7 @@
 import React from "react";
 import { Container, Stack, Box, Avatar, Typography, Button, AppBar, Tabs, Tab } from "@mui/material";
 import EventList from "./components/EventList";
+
 import UserForm from "./components/UserForm";
 
 function getID() {
@@ -73,8 +74,8 @@ export default function Profile() {
                             src="/userimg.jpg"
                             sx={{ width: 100, height: 100 }} />
                         <Box>
-                            <Typography component='h4' variant="h4" sx={{ flexWrap: { xs: 'wrap', md: 'noWrap' } }}>Arnold Schwarzenegger</Typography>
-                            <Typography component='h5' variant="h5">Organizador</Typography>
+                            <Typography component='h4' variant="h4" sx={{ flexWrap: { xs: 'wrap', md: 'noWrap' } }}>{`${userData.name} ${userData.lastname}`}</Typography>
+                            <Typography component='h5' variant="h5">{userData.coordinator ? 'organizador' : null}</Typography>
                         </Box>
                     </Stack>
 
@@ -97,7 +98,9 @@ export default function Profile() {
                         <UserForm />
                     </TabPanel>
                     <TabPanel value={value} index={1}>
+
                         <EventList />
+
                     </TabPanel>
 
                 </Box>
