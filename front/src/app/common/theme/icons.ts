@@ -9,6 +9,7 @@ import MonetizationOnRoundedIcon from '@mui/icons-material/MonetizationOnRounded
 import EventAvailableRoundedIcon from '@mui/icons-material/EventAvailableRounded';
 import ImageRoundedIcon from '@mui/icons-material/ImageRounded';
 import PanoramaRoundedIcon from '@mui/icons-material/PanoramaRounded';
+import LabelRoundedIcon from '@mui/icons-material/LabelRounded';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
 
@@ -24,6 +25,7 @@ const Icons = {
     EventAvailableRoundedIcon: EventAvailableRoundedIcon,
     ImageRoundedIcon: ImageRoundedIcon,
     PanoramaRoundedIcon: PanoramaRoundedIcon,
+    LabelRoundedIcon: LabelRoundedIcon,
     InstagramIcon: InstagramIcon,
     FacebookIcon: FacebookIcon,
 };
