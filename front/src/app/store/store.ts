@@ -1,10 +1,12 @@
 'use client';
 import { configureStore } from '@reduxjs/toolkit';
 import categoryReducer from './slices/CategorySlice';
+import isLogedReducer from './slices/IsLogedSlice';
 
 export const store = configureStore({
     reducer: {
         category: categoryReducer,
+        isLoged: isLogedReducer,
     },
 });
 
