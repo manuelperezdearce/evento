@@ -10,7 +10,8 @@ type event = {
     title: string,
     date: string,
     active: boolean,
-    img: string
+    img: string,
+
 }
 
 function getID() {
@@ -57,7 +58,6 @@ const MyEvents = [
 export default function EventList() {
 
     const [events, setEvents] = useState(MyEvents)
-
     const [selects, setSelects] = useState(
         {
             sortSelect: "",
@@ -65,9 +65,14 @@ export default function EventList() {
         }
     )
 
-    // useEffect(() => {
-    //     console.log(selects)
-    // }, [selects])
+    const handleDeleteButton = (id: string) => {
+        const newArray = events.filter((event) => event.id != id)
+        setEvents(newArray)
+    }
+
+    useEffect(() => {
+        console.log(window.location.pathname)
+    }, [selects])
 
 
     const activeFilter = (event: event) => {
@@ -142,7 +147,7 @@ export default function EventList() {
 
                 events.sort((a, b) => eventSort(a, b)).filter((event) => activeFilter(event)).map(({ active, date, id, img, title }) => {
                     return (
-                        <CardEventList key={id} props={{ active, date, id, img, title }} />
+                        <CardEventList key={id} props={{ active, date, id, img, title, handleDeleteButton }} />
                     )
                 })
             }

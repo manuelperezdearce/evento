@@ -21,7 +21,7 @@ const pages = [
   { name: 'Nosotros', route: 'about' },
 ];
 const settings = [
-  { name: 'Perfil', route: 'users' },
+  { name: 'Perfil', route: 'profile' },
   { name: 'Logout', route: 'auth' },
 ];
 
@@ -225,7 +225,7 @@ export const Navbar = () => {
                 onClose={handleCloseUserMenu}
               >
                 {settings.map(({ name, route }) => (
-                  <Link href={`${name !== 'Perfil' ? route : `${route}/1`}`}>
+                  <Link href={route}>
                     <MenuItem key={route} onClick={handleCloseUserMenu}>
                       <Typography textAlign="center">{name}</Typography>
                     </MenuItem>
