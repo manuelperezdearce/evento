@@ -15,11 +15,7 @@ public class Coment
     public int UserId { get; set; }
 
     public int EventId { get; set; }
-
-    [ForeignKey("idUser")]
-    public virtual User User { get; set; }
-
-    [ForeignKey("idEvent")]
-    public virtual Event Event { get; set; }
+    public  User User { get; set; }
+    public Event Event { get; set; }
      
 }

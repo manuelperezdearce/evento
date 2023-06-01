@@ -1,11 +1,9 @@
 'use client'
+import React from 'react'
 import { Avatar, Box, Typography, TextField, InputAdornment } from '@mui/material'
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded'
-import React from 'react'
 
 export const Hero = () => {
-
-
 
   return (
     <Box sx={{

@@ -1,9 +1,13 @@
+
+
+import React from 'react'
 import { MuiThemeProvider } from './styles/MuiThemeProvider';
 import './globals.css';
-import { Hero } from './common/components/Hero';
+// import { Hero } from './common/components/Hero';
 import { Navbar } from './common/components/Navbar';
 import Head from 'next/head';
 import { ContainerBody } from './containers/ContainerBody';
+
 
 export const metadata = {
   title: 'EventTo',
@@ -24,7 +28,9 @@ export default function RootLayout({
       <body>
         <MuiThemeProvider>
           <Navbar />
-          <Hero />
+
+          {/* <Hero /> */}
+
           <ContainerBody>{children}</ContainerBody>
         </MuiThemeProvider>
       </body>
