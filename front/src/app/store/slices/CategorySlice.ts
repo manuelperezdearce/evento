@@ -6,6 +6,7 @@ const initialState: CategoriesState = {
     loading: false,
     categories: [],
     error: false,
+    errorMessage: '',
 };
 
 const getCategories = createAsyncThunk('categories/getCategories', async () => {
@@ -29,6 +30,7 @@ const CategorySlice = createSlice({
         builder.addCase(getCategories.rejected, (state, action) => {
             state.loading = false;
             state.error = true;
+            state.errorMessage = action.error.message;
         });
         builder.addCase(getCategories.fulfilled, (state, action) => {
             state.loading = false;
