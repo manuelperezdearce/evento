@@ -12,6 +12,7 @@ import PanoramaRoundedIcon from '@mui/icons-material/PanoramaRounded';
 import LabelRoundedIcon from '@mui/icons-material/LabelRounded';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
+import DirectionsRoundedIcon from '@mui/icons-material/DirectionsRounded';
 
 const Icons = {
     InfoRoundedIcon: InfoRoundedIcon,
@@ -28,6 +29,7 @@ const Icons = {
     LabelRoundedIcon: LabelRoundedIcon,
     InstagramIcon: InstagramIcon,
     FacebookIcon: FacebookIcon,
+    DirectionsRoundedIcon: DirectionsRoundedIcon,
 };
 
 export default Icons;
