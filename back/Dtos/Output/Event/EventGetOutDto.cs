@@ -1,4 +1,5 @@
-﻿using back.Dtos.Output.Coment;
+﻿using back.Dtos.Output.Category;
+using back.Dtos.Output.Coment;
 using back.Dtos.Output.Entry;
 using back.Dtos.Output.Feature;
 using back.Dtos.Output.Ranking;
@@ -33,6 +34,8 @@ public class EventGetOutDto
 
     public int EntryId{ get; set; }
 
+    public int CategoryId { get; set; }
+
     public bool IsActive { get; set; }
 
     public bool Status { get; set; }
@@ -41,6 +44,8 @@ public class EventGetOutDto
     public RankingGetOutDto Ranking { get; set; }
     public FeatureGetOutDto Feature { get; set; }
     public EntryGetOutDto Entry { get; set; }
+
+    public CategoryGetOutDto Category { get; set; }
 
     //public UserGetOutDto User { get; set; }
 

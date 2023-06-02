@@ -39,6 +39,7 @@ public class EventService
         events.RankingId = eventCreateInDto.RankingId;
         events.EntryId = eventCreateInDto.EntryId;
         events.Status = true;
+        events.CategoryId = eventCreateInDto.CategoryId;
         _context.Event.Add(events);
         await _context.SaveChangesAsync();
 
@@ -68,7 +69,8 @@ public class EventService
             RankingId = eventGetOutDto.RankingId,
             EntryId = eventGetOutDto.EntryId,
             Status = eventGetOutDto.Status,
-            Slug=eventGetOutDto.Slug
+            Slug=eventGetOutDto.Slug,
+            CategoryId=eventGetOutDto.CategoryId
 
         }).ToList();
 
@@ -77,16 +79,14 @@ public class EventService
 
     public async Task<EventGetOutDto> GetById(string slug)
     {
-        Event events = await _context.Event.FirstOrDefaultAsync(c => c.Slug == slug && c.Status == true);
-
-        //Event events = await _context.Event.FirstOrDefaultAsync(c => c.Id == id && c.Status == true);
+       
         Event events = await _context.Event
             .Include(e=>e.Coment)
             .ThenInclude(e=>e.User)
             .Include(e => e.Feature)
             .Include(e => e.Ranking)
             .Include(e => e.Entry)
-           .FirstOrDefaultAsync(c => c.Id == id && c.Status == true);
+           .FirstOrDefaultAsync(c => c.Slug == slug && c.Status == true);
 
         IMapper mapper = new MapperConfiguration(cfg =>
         {
@@ -95,22 +95,6 @@ public class EventService
 
         EventGetOutDto result = mapper.Map<EventGetOutDto>(events);
 
-
-            Id = events.Id,
-            Name = events.Name,
-            ShortDescription = events.ShortDescription,
-            Description = events.Description,
-            DateStart = events.DateStart,
-            DateEnd = events.DateEnd,
-            CreatedAt = events.CreatedAt,
-            TicketPrice = events.TicketPrice,
-            CommentId = events.CommentId,
-            FeatureId = events.FeatureId,
-            RankingId = events.RankingId,
-            EntryId = events.EntryId,
-            Status = events.Status,
-            Slug =events.Slug
-        };
         return result;
     }
 
@@ -131,6 +115,7 @@ public class EventService
         events.FeatureId = eventUpdateInDtocs.FeatureId;
         events.RankingId = eventUpdateInDtocs.RankingId;
         events.EntryId = eventUpdateInDtocs.EntryId;
+        events.CategoryId = eventUpdateInDtocs.CategoryId;  
         await _context.SaveChangesAsync();
 
         return events;
@@ -145,4 +130,56 @@ public class EventService
 
         return events;
     }
+
+
+
+    public async Task<EventGetOutDto> FilterByName(string name)
+    {
+        Event events = await _context.Event
+           .Include(e => e.Coment)
+           .ThenInclude(e => e.User)
+           .Include(e => e.Feature)
+           .Include(e => e.Ranking)
+           .Include(e => e.Entry)
+          .FirstOrDefaultAsync(c => c.Name == name && c.Status == true);
+
+        IMapper mapper = new MapperConfiguration(cfg =>
+        {
+            cfg.AddProfile<EventMappingProfile>(); // Agrega tu perfil de mapeo personalizado
+        }).CreateMapper();
+
+        EventGetOutDto result = mapper.Map<EventGetOutDto>(events);
+
+
+        return result;
+    }
+
+
+
+    public async Task<EventGetOutDto> FilterByCategory(int id)
+    {
+        Event events = await _context.Event
+           .Include(e => e.Coment)
+           .ThenInclude(e => e.User)
+           .Include(e => e.Feature)
+           .Include(e => e.Ranking)
+           .Include(e => e.Entry)
+           .Include(e=>e.Category)
+          .FirstOrDefaultAsync(c => c.CategoryId ==id && c.Status == true);
+
+        IMapper mapper = new MapperConfiguration(cfg =>
+        {
+            cfg.AddProfile<EventMappingProfile>(); // Agrega tu perfil de mapeo personalizado
+        }).CreateMapper();
+
+        EventGetOutDto result = mapper.Map<EventGetOutDto>(events);
+
+
+        return result;
+    }
+
+
+
+
+
 }

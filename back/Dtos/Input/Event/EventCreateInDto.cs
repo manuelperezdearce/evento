@@ -31,4 +31,6 @@ public class EventCreateInDto
 
     public string Slug { get; set; }
 
+    public int CategoryId { get; set; }
+
 }
