@@ -6,19 +6,23 @@ import {
     FormGroup,
     InputAdornment,
     TextField,
-    MenuItem,
+    Autocomplete,
 } from '@mui/material';
 import PlaceRoundedIcon from '@mui/icons-material/PlaceRounded';
 import TodayRoundedIcon from '@mui/icons-material/TodayRounded';
 import EventRoundedIcon from '@mui/icons-material/EventRounded';
 import CategoryIcon from '@mui/icons-material/Category';
+import { categories } from '@/app/common/constants/mockData';
 
-export const SearchFilters = () => {
-    const categories = [
-        { label: 'Elegir Categoria', value: '' },
-        { label: 'Cat 1', value: 'cat 1' },
-    ];
+interface SearchFiltersProps {
+    handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    setCategory: React.Dispatch<React.SetStateAction<string>>;
+}
 
+export const SearchFilters: React.FC<SearchFiltersProps> = ({
+    handleChange,
+    setCategory,
+}) => {
     return (
         <FormControl
             fullWidth
@@ -32,8 +36,8 @@ export const SearchFilters = () => {
                 <FormControlLabel
                     control={
                         <Checkbox
-                            name="free"
-                            value={true}
+                            onChange={handleChange}
+                            name="isFree"
                             sx={{ '& .MuiSvgIcon-root': { fontSize: 30 } }}
                         />
                     }
@@ -44,8 +48,8 @@ export const SearchFilters = () => {
                 <FormControlLabel
                     control={
                         <Checkbox
+                            onChange={handleChange}
                             name="onlyAdults"
-                            value={true}
                             sx={{ '& .MuiSvgIcon-root': { fontSize: 30 } }}
                         />
                     }
@@ -53,30 +57,34 @@ export const SearchFilters = () => {
                 />
             </FormGroup>
 
-            <TextField
-                name="category"
-                label="Categoria"
-                value={''}
+            <Autocomplete
                 fullWidth
-                select
-                InputProps={{
-                    placeholder: 'Concierto',
-                    sx: { borderRadius: 30 },
-                    startAdornment: (
-                        <InputAdornment position="start">
-                            <CategoryIcon color="primary" />
-                        </InputAdornment>
-                    ),
-                }}>
-                {categories.map((item) => (
-                    <MenuItem key={item.label} value={item.value}>
-                        {item.label}
-                    </MenuItem>
-                ))}
-            </TextField>
+                disablePortal
+                onChange={(event, newValue) => setCategory(newValue || '')}
+                options={categories.map((item) => item.label)}
+                renderInput={(params) => {
+                    return (
+                        <TextField
+                            {...params}
+                            InputProps={{
+                                ...params.InputProps,
+                                name: 'category',
+                                startAdornment: (
+                                    <InputAdornment position="start">
+                                        <CategoryIcon color="primary" />
+                                    </InputAdornment>
+                                ),
+                                placeholder: 'Concierto',
+                            }}
+                            label="Categoria"
+                        />
+                    );
+                }}
+            />
             <TextField
                 fullWidth
                 name="city"
+                onChange={handleChange}
                 label="Ciudad"
                 placeholder="Buenos Aires"
                 InputProps={{
@@ -90,6 +98,7 @@ export const SearchFilters = () => {
             />
             <TextField
                 name="fromDate"
+                onChange={handleChange}
                 label="Desde"
                 type="date"
                 fullWidth
@@ -104,6 +113,7 @@ export const SearchFilters = () => {
             />
             <TextField
                 name="toDate"
+                onChange={handleChange}
                 label="Hasta"
                 type="date"
                 fullWidth

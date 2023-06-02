@@ -23,25 +23,25 @@ namespace back.Migrations
 
             modelBuilder.Entity("back.Models.Category", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("description")
+                    b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("varchar(200)");
 
-                    b.Property<string>("name")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("varchar(200)");
 
-                    b.Property<string>("type")
+                    b.Property<string>("Type")
                         .IsRequired()
                         .HasColumnType("varchar(200)");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.ToTable("Category");
                 });
@@ -74,31 +74,30 @@ namespace back.Migrations
 
             modelBuilder.Entity("back.Models.Coment", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("created_at")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("description")
+                    b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("idEvent")
+                    b.Property<int>("EventId")
                         .HasColumnType("int");
 
-                    b.Property<int>("idUser")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
-                    b.HasIndex("idEvent")
-                        .IsUnique();
+                    b.HasIndex("EventId");
 
-                    b.HasIndex("idUser");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Coment");
                 });
@@ -126,89 +125,84 @@ namespace back.Migrations
 
             modelBuilder.Entity("back.Models.Entry", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("description")
+                    b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("name")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.ToTable("Entry");
                 });
 
             modelBuilder.Entity("back.Models.Event", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Entryid")
+                    b.Property<int>("CommentId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Featureid")
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateEnd")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateStart")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("EntryId")
                         .HasColumnType("int");
+
+                    b.Property<int>("FeatureId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("RankingId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("created_at")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("date_end")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("date_start")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("description")
+                    b.Property<string>("ShortDescription")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("idComment")
-                        .HasColumnType("int");
-
-                    b.Property<int>("idEntry")
-                        .HasColumnType("int");
-
-                    b.Property<int>("idFeature")
-                        .HasColumnType("int");
-
-                    b.Property<int>("idRanking")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("is_active")
+                    b.Property<bool>("Status")
                         .HasColumnType("bit");
 
-                    b.Property<string>("name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("short_description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("status")
-                        .HasColumnType("bit");
-
-                    b.Property<float>("ticket_price")
+                    b.Property<float>("TicketPrice")
                         .HasColumnType("real");
 
-                    b.HasKey("id");
+                    b.Property<string>("prueba")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasIndex("Entryid");
+                    b.HasKey("Id");
 
-                    b.HasIndex("Featureid");
+                    b.HasIndex("EntryId");
+
+                    b.HasIndex("FeatureId");
 
                     b.HasIndex("RankingId");
 
@@ -217,38 +211,62 @@ namespace back.Migrations
 
             modelBuilder.Entity("back.Models.Feature", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("drink")
+                    b.Property<string>("Drink")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("food")
+                    b.Property<string>("Food")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("parking")
+                    b.Property<string>("Parking")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("pets")
+                    b.Property<string>("Pets")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("smoking")
+                    b.Property<bool>("Smoking")
                         .HasColumnType("bit");
 
-                    b.Property<string>("wifi")
+                    b.Property<string>("Wifi")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.ToTable("Feature");
+                });
+
+            modelBuilder.Entity("back.Models.Images", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Url1")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Url2")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Url3")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Images");
                 });
 
             modelBuilder.Entity("back.Models.Ranking", b =>
@@ -268,6 +286,39 @@ namespace back.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Ranking");
+                });
+
+            modelBuilder.Entity("back.Models.Social", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Facebook")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Instagram")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Twitter")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Web")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Whatsapp")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Social");
                 });
 
             modelBuilder.Entity("back.Models.User", b =>
@@ -316,14 +367,14 @@ namespace back.Migrations
             modelBuilder.Entity("back.Models.Coment", b =>
                 {
                     b.HasOne("back.Models.Event", "Event")
-                        .WithOne("Coment")
-                        .HasForeignKey("back.Models.Coment", "idEvent")
+                        .WithMany("Coment")
+                        .HasForeignKey("EventId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("back.Models.User", "User")
                         .WithMany()
-                        .HasForeignKey("idUser")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -336,13 +387,13 @@ namespace back.Migrations
                 {
                     b.HasOne("back.Models.Entry", "Entry")
                         .WithMany()
-                        .HasForeignKey("Entryid")
+                        .HasForeignKey("EntryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("back.Models.Feature", "Feature")
                         .WithMany()
-                        .HasForeignKey("Featureid")
+                        .HasForeignKey("FeatureId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -375,8 +426,7 @@ namespace back.Migrations
 
             modelBuilder.Entity("back.Models.Event", b =>
                 {
-                    b.Navigation("Coment")
-                        .IsRequired();
+                    b.Navigation("Coment");
                 });
 #pragma warning restore 612, 618
         }
