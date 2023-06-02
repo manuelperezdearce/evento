@@ -12,6 +12,7 @@ import PlaceRoundedIcon from '@mui/icons-material/PlaceRounded';
 import TodayRoundedIcon from '@mui/icons-material/TodayRounded';
 import EventRoundedIcon from '@mui/icons-material/EventRounded';
 import CategoryIcon from '@mui/icons-material/Category';
+import { categories } from '@/app/common/constants/mockData';
 
 interface SearchFiltersProps {
     handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -22,8 +23,6 @@ export const SearchFilters: React.FC<SearchFiltersProps> = ({
     handleChange,
     setCategory,
 }) => {
-    const categories = ['cat1', 'cat2'];
-
     return (
         <FormControl
             fullWidth
@@ -32,7 +31,6 @@ export const SearchFilters: React.FC<SearchFiltersProps> = ({
                 flexDirection: { xs: 'column', md: 'row' },
                 justifyContent: 'space-between',
                 gap: '2rem',
-
             }}>
             <FormGroup>
                 <FormControlLabel
@@ -63,7 +61,7 @@ export const SearchFilters: React.FC<SearchFiltersProps> = ({
                 fullWidth
                 disablePortal
                 onChange={(event, newValue) => setCategory(newValue || '')}
-                options={categories}
+                options={categories.map((item) => item.label)}
                 renderInput={(params) => {
                     return (
                         <TextField
@@ -71,7 +69,6 @@ export const SearchFilters: React.FC<SearchFiltersProps> = ({
                             InputProps={{
                                 ...params.InputProps,
                                 name: 'category',
-                                required: true,
                                 startAdornment: (
                                     <InputAdornment position="start">
                                         <CategoryIcon color="primary" />
