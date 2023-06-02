@@ -21,6 +21,7 @@ const pages = [
     { name: 'Home', route: '/' },
     { name: 'Explorar', route: 'explore' },
     { name: 'Nosotros', route: 'about' },
+    { name: 'Crear Evento', route: 'createEvent' },
 ];
 const settings = [
     { name: 'Perfil', route: 'users' },
@@ -70,7 +71,7 @@ export const Navbar = () => {
                     }}>
                     <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                         <button onClick={handleLogin}>
-                            {isLoged ? 'Login' : 'Logout'}
+                            {isLoged ? 'Logout' : 'Login'}
                         </button>
                     </Box>
 
@@ -237,7 +238,7 @@ export const Navbar = () => {
                                 {settings.map(({ name, route }) => (
                                     <Link
                                         href={`${
-                                            name !== 'Perfil' ? route : `${route}/1`
+                                            name !== 'Perfil' ? route : `/profile`
                                         }`}>
                                         <MenuItem
                                             key={route}
