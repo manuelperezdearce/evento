@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace back.Models;
 
@@ -29,15 +30,30 @@ public class Event
 
     public int EntryId { get; set; }
 
-    public Coment Coment { get; set; }  
+    public ICollection<Coment> Coment { get; set; }
+    //public ICollection<Ranking> Ranking { get; set; }
 
+    //public ICollection<Feature> Feature { get; set; }
+
+    //public ICollection<Entry> Entry { get; set; }
     public Feature Feature { get; set; }
-
     public Ranking Ranking { get; set; }
-
     public Entry Entry { get; set; }
 
     public bool IsActive { get; set; }
 
     public bool Status { get; set; }
+
+    public string prueba { get; set; }
+
+    public Event()
+    {
+
+        Coment= new HashSet<Coment>();
+
+    }
+
+
+
+    public string Slug { get; set; }
 }

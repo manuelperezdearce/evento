@@ -1,7 +1,14 @@
-﻿using back.Dtos.Input.Event;
+﻿using AutoMapper;
+using back.Dtos.Input.Event;
+using back.Dtos.Output.Coment;
+using back.Dtos.Output.Entry;
 using back.Dtos.Output.Event;
+using back.Dtos.Output.Feature;
+using back.Dtos.Output.Ranking;
+using back.Mapper;
 using back.Models;
 using Microsoft.EntityFrameworkCore;
+using Slugify;
 
 namespace back.Services;
 
@@ -16,8 +23,11 @@ public class EventService
 
     public async Task<Event> Create(EventCreateInDto eventCreateInDto)
     {
+        var slugHelper = new SlugHelper();
         var events = new Event();
+        //events.Name = slugHelper.GenerateSlug(eventCreateInDto.Name.ToString());
         events.Name = eventCreateInDto.Name;
+        events.Slug = slugHelper.GenerateSlug(events.Name);
         events.ShortDescription = eventCreateInDto.ShortDescription;
         events.Description = eventCreateInDto.Description; ;
         events.DateStart = eventCreateInDto.DateStart;
@@ -40,8 +50,11 @@ public class EventService
     {
         List<Event> events = await _context.Event.Where(c => c.Status == true).ToListAsync();
 
+
+
         List<EventGetOutDto> eventDto = events.Select(eventGetOutDto => new EventGetOutDto
         {
+
             Id = eventGetOutDto.Id,
             Name = eventGetOutDto.Name,
             ShortDescription = eventGetOutDto.ShortDescription,
@@ -54,19 +67,35 @@ public class EventService
             FeatureId = eventGetOutDto.FeatureId,
             RankingId = eventGetOutDto.RankingId,
             EntryId = eventGetOutDto.EntryId,
-            Status = eventGetOutDto.Status
+            Status = eventGetOutDto.Status,
+            Slug=eventGetOutDto.Slug
 
         }).ToList();
 
         return eventDto;
     }
 
-    public async Task<EventGetOutDto> GetById(int id)
+    public async Task<EventGetOutDto> GetById(string slug)
     {
-        Event events = await _context.Event.FirstOrDefaultAsync(c => c.Id == id && c.Status == true);
+        Event events = await _context.Event.FirstOrDefaultAsync(c => c.Slug == slug && c.Status == true);
 
-        EventGetOutDto result = new EventGetOutDto
+        //Event events = await _context.Event.FirstOrDefaultAsync(c => c.Id == id && c.Status == true);
+        Event events = await _context.Event
+            .Include(e=>e.Coment)
+            .ThenInclude(e=>e.User)
+            .Include(e => e.Feature)
+            .Include(e => e.Ranking)
+            .Include(e => e.Entry)
+           .FirstOrDefaultAsync(c => c.Id == id && c.Status == true);
+
+        IMapper mapper = new MapperConfiguration(cfg =>
         {
+            cfg.AddProfile<EventMappingProfile>(); // Agrega tu perfil de mapeo personalizado
+        }).CreateMapper();
+
+        EventGetOutDto result = mapper.Map<EventGetOutDto>(events);
+
+
             Id = events.Id,
             Name = events.Name,
             ShortDescription = events.ShortDescription,
@@ -79,15 +108,19 @@ public class EventService
             FeatureId = events.FeatureId,
             RankingId = events.RankingId,
             EntryId = events.EntryId,
-            Status = events.Status
+            Status = events.Status,
+            Slug =events.Slug
         };
         return result;
     }
 
     public async Task<Event> Update(EventUpdateInDtocs eventUpdateInDtocs)
     {
+        var slugHelper =new SlugHelper();
+
         Event events = await _context.Event.FindAsync(eventUpdateInDtocs.Id);
         events.Name = eventUpdateInDtocs.Name;
+        events.Slug= slugHelper.GenerateSlug(events.Name);
         events.ShortDescription = eventUpdateInDtocs.ShortDescription;
         events.Description = eventUpdateInDtocs.Description;
         events.DateStart = eventUpdateInDtocs.DateStart;

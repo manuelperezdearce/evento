@@ -32,6 +32,7 @@ export const SearchFilters: React.FC<SearchFiltersProps> = ({
                 flexDirection: { xs: 'column', md: 'row' },
                 justifyContent: 'space-between',
                 gap: '2rem',
+
             }}>
             <FormGroup>
                 <FormControlLabel
