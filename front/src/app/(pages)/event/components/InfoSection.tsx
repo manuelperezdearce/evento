@@ -61,6 +61,11 @@ export const InfoSection = ({ id }: { id: number }) => {
                         label="Entrada: $500"
                         color="primary"
                     />
+                    <Chip
+                        icon={<Icons.AccountCircleRoundedIcon />}
+                        label="Solo adultos"
+                        color="primary"
+                    />
                 </Box>
                 <Box sx={{ mt: 3, mb: 3 }}>
                     <Typography>

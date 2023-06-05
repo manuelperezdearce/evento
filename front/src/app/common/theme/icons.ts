@@ -16,6 +16,8 @@ import PlaceRoundedIcon from '@mui/icons-material/PlaceRounded';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
+import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
+import CalendarTodayRoundedIcon from '@mui/icons-material/CalendarTodayRounded';
 
 const Icons = {
     InfoRoundedIcon: InfoRoundedIcon,
@@ -36,6 +38,8 @@ const Icons = {
     AttachMoneyIcon: AttachMoneyIcon,
     WhatsAppIcon: WhatsAppIcon,
     FacebookRoundedIcon: FacebookRoundedIcon,
+    AccountCircleRoundedIcon: AccountCircleRoundedIcon,
+    CalendarTodayRoundedIcon: CalendarTodayRoundedIcon,
 };
 
 export default Icons;
