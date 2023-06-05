@@ -47,7 +47,7 @@ const userData = {
     name: 'Arnold',
     lastname: 'Schwarzenegger',
     org: 'Bar Los Bakanes',
-    imgURL: 'userimg.jpg',
+    imgURL: 'https://upload.wikimedia.org/wikipedia/commons/e/ed/Arnold_Schwarzenegger_by_Gage_Skidmore_4_%28cropped%29.jpg',
     coordinator: true,
     whatsappURL: 'https://web.whatsapp.com/',
     instagramURL: 'https://instagram.com/',

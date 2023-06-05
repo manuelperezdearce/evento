@@ -2,7 +2,7 @@
 import { Container } from "@mui/material";
 import { EventCard } from "./common/components/EventCard";
 import SliderContainer from "./(pages)/home/components/SliderContainer";
-import { Hero } from "./common/components";
+// import { Hero } from "./common/components";
 
 function getID() {
   return Math.floor(Math.random() * 1000000);
@@ -28,7 +28,7 @@ export default function Home() {
   return (
     <main>
       <Container maxWidth="lg" sx={{ mt: "3rem", mb: "3rem" }}>
-        <Hero />
+        {/* <Hero /> */}
         {sectionArrays.map((item) => {
           return (
             <SliderContainer key={item.id} sliderTitle={item.title}>

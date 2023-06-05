@@ -64,12 +64,6 @@ export default function EventList() {
             statusSelect: ""
         }
     )
-
-    // useEffect(() => {
-    //     console.log(selects)
-    // }, [selects])
-
-
     const activeFilter = (event: event) => {
         if (selects.statusSelect == '1') {
             return event.active === true
