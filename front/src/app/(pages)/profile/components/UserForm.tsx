@@ -10,6 +10,10 @@ export default function UserForm() {
         edit ? setEdit(false) : setEdit(true)
     }
 
+    const handleForm = () => {
+
+    }
+
     return (
         <Stack>
             <Stack component={'form'} gap={2}>
@@ -20,6 +24,7 @@ export default function UserForm() {
                         label="Nombre"
                         defaultValue="Arnold"
                         fullWidth
+                        onChange={handleForm}
                     />
                     <TextField
                         disabled={edit ? false : true}
@@ -27,6 +32,7 @@ export default function UserForm() {
                         label="Apellido"
                         defaultValue="Schwarzenegger"
                         fullWidth
+                        onChange={handleForm}
                     />
                 </Stack>
 
@@ -37,6 +43,7 @@ export default function UserForm() {
                         label="Intagram"
                         defaultValue="https://instagram.com/"
                         fullWidth
+                        onChange={handleForm}
                     />
                     <TextField
                         disabled={edit ? false : true}
@@ -44,6 +51,7 @@ export default function UserForm() {
                         label="WhatsApp"
                         defaultValue="https://web.whatsapp.com/"
                         fullWidth
+                        onChange={handleForm}
                     />
                     <TextField
                         disabled={edit ? false : true}
@@ -51,6 +59,7 @@ export default function UserForm() {
                         label="Web"
                         defaultValue="https://www.mycompany.com"
                         fullWidth
+                        onChange={handleForm}
                     />
                 </Stack>
                 <Box width={120} m={'auto'} >
