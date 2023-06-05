@@ -1,4 +1,4 @@
-import { Avatar, Button, Stack, Typography, Box, Chip, Link } from "@mui/material";
+import { Avatar, Button, Stack, Typography, Link } from "@mui/material";
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ToggleOnIcon from '@mui/icons-material/ToggleOn';
@@ -12,15 +12,15 @@ type cardData = {
         title: string,
         date: string,
         active: boolean,
-        img: string
+        img: string,
+        handleDeleteButton: any
     }
 
 }
 
 export default function CardEventList({ props }: cardData) {
     const [status, setStatus] = useState(props.active)
-
-    const HandleStatusButton = () => {
+    const handleStatusButton = () => {
         status ? setStatus(false) : setStatus(true)
     }
 
@@ -47,7 +47,7 @@ export default function CardEventList({ props }: cardData) {
                     <Typography variant="h6">{props.date}</Typography>
                 </Stack>
                 <Stack direction={'row'} spacing={{ xs: 0, sm: 0, md: 5 }} flexWrap={'wrap'}>
-                    <Button sx={{ color: '#fff', width: '155px' }} onClick={() => HandleStatusButton()}>
+                    <Button sx={{ color: '#fff', width: '155px' }} onClick={() => handleStatusButton()}>
                         <Typography variant="h6" width={'100%'} display={'flex'} justifyContent={'space-between'} alignItems={'center'} gap={1} >
                             {status ?
                                 <>Activo < ToggleOnIcon fontSize="large" color='success' /></>
@@ -59,24 +59,17 @@ export default function CardEventList({ props }: cardData) {
                         <Link href="event/1" display={'flex'}>
                             <Button sx={{ padding: 0 }}>
                                 <VisibilityIcon fontSize="large" color="info" />
-
                             </Button>
                         </Link>
                         <Button >
                             <EditIcon fontSize="large" color="secondary" />
                         </Button>
-                        <Button>
+                        <Button onClick={() => props.handleDeleteButton(props.id)}>
                             <DeleteIcon fontSize="large" color='error' />
                         </Button>
-
                     </Stack>
-
                 </Stack>
-
-
             </Stack >
-
-
         </Stack >
     )
 }
