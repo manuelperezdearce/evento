@@ -7,48 +7,48 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 import { useState } from 'react';
 import Link from 'next/link';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleLogin } from '@/app/store/slices/IsLogedSlice';
+import Icons from '../theme/icons';
+import { RootState } from '@/app/store/store';
 
-const pages = [
+const onlyPublicPages = [
   { name: 'Home', route: '/' },
   { name: 'Explorar', route: 'explore' },
   { name: 'Nosotros', route: 'about' },
 ];
-const settings = [
-  { name: 'Perfil', route: 'profile' },
-  { name: 'Logout', route: 'auth' },
-];
 
-const LoginOrRegister = [
-  { name: 'ingresar', route: 'login' },
-  { name: 'registrarse', route: 'register' },
+const userPages = [
+  { name: 'Crear Evento', route: 'createEvent', private: true },
+  { name: 'Ingresar', route: 'login', publicOnly: true },
+  { name: 'Registrarse', route: 'register', publicOnly: true },
+  { name: 'Perfil', route: 'profile', private: true },
 ];
 
 export const Navbar = () => {
-  const [login, setLogin] = useState<boolean>(false);
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
-  const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElUser(event.currentTarget);
   };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
+  const dispatch = useDispatch();
+
+  const handleLogin = () => {
+    dispatch(toggleLogin());
   };
+
+  const { isLoged }: { isLoged: boolean } = useSelector(
+    (state: RootState) => state.isLoged
+  );
 
   return (
     <AppBar position="static">
@@ -56,46 +56,39 @@ export const Navbar = () => {
         <Toolbar
           disableGutters
           sx={{
+            display: 'flex',
             justifyContent: 'space-between',
-          }}
-        >
-          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-            <button onClick={() => setLogin(true)}>login</button>
-            <button onClick={() => setLogin(false)}>logout</button>
-          </Box>
-
-          <Link href={'/'} style={{ display: 'flex', color: '#fff' }}>
-            <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          }}>
+          <Link
+            href={'/'}
+            style={{ display: 'flex', color: '#fff', alignItems: 'center' }}>
+            <Icons.EventAvailableRoundedIcon
+              sx={{ display: 'flex', mr: 1 }}
+            />
             <Typography
               variant="h6"
               noWrap
               component="a"
               sx={{
-                mr: 2,
-                display: { xs: 'none', md: 'flex' },
-                fontFamily: 'monospace',
                 fontWeight: 700,
                 letterSpacing: '.3rem',
                 textDecoration: 'none',
-              }}
-            >
-              LOGO EvenTo
+              }}>
+              EvenTo
             </Typography>
           </Link>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="inherit"
-            >
+              color="inherit">
               <MenuIcon />
             </IconButton>
             <Menu
-              id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
                 vertical: 'bottom',
@@ -110,129 +103,91 @@ export const Navbar = () => {
               onClose={handleCloseNavMenu}
               sx={{
                 display: { xs: 'block', md: 'none' },
-              }}
-            >
-              {pages.map(({ name, route }) => (
-                <Link href={route || ''} key={'name'}>
-                  <MenuItem key={name} onClick={handleCloseNavMenu}>
+              }}>
+              {onlyPublicPages.map(({ name, route }) => (
+                <Link
+                  href={route || ''}
+                  key={name}
+                  onClick={handleCloseNavMenu}>
+                  <MenuItem>
                     <Typography textAlign="center">{name}</Typography>
                   </MenuItem>
                 </Link>
               ))}
-              {!login
-                ? LoginOrRegister.map((item) => {
-                  return (
-                    <Link href={item.route}>
-                      <Button
-                        onClick={handleCloseNavMenu}
-                        sx={{ my: 2, color: 'primary', display: 'block' }}
-                      >
-                        {item.name}
-                      </Button>
-                    </Link>
-                  );
-                })
-                : null}
+              {userPages.map((item) => {
+                if (item.private && !isLoged) return null;
+                if (item.publicOnly && isLoged) return null;
+                return (
+                  <Link
+                    key={item.name}
+                    href={item.route}
+                    onClick={handleCloseNavMenu}>
+                    <Button
+                      sx={{
+                        my: 2,
+                        color: 'primary',
+                        display: 'block',
+                      }}>
+                      {item.name}
+                    </Button>
+                  </Link>
+                );
+              })}
             </Menu>
           </Box>
 
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            EvenTo
-          </Typography>
-
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            {pages.map(({ name, route }) => (
-              <Link href={route || ''}>
+            {onlyPublicPages.map(({ name, route }) => (
+              <Link key={name} href={route || ''}>
                 <Button
-                  key={name}
-                  onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: 'white', display: 'block' }}
-                >
+                  // onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: 'white', display: 'block' }}>
                   {name}
                 </Button>
               </Link>
             ))}
             <Button
               onClick={handleCloseNavMenu}
-              sx={{ my: 2, color: 'white', display: 'block' }}
-            >
+              sx={{ my: 2, color: 'white', display: 'block' }}>
               ¿Qué hacer hoy?
             </Button>
           </Box>
 
-          <Box sx={{ flexGrow: 0, display: 'flex' }}>
-            <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
-              {!login
-                ? LoginOrRegister.map((item) => {
-                  return (
-                    <Link href={item.route}>
-                      <Button
-                        onClick={handleCloseNavMenu}
-                        sx={{ my: 2, color: 'white', display: 'block' }}
-                      >
-                        {item.name}
-                      </Button>
-                    </Link>
-                  );
-                })
-                : null}
-            </Box>
-
-            <Box
-              sx={{
-                display: `${login ? 'block' : 'none'}`,
-              }}
-            >
-              <Tooltip title="Open settings">
-                <IconButton
-                  onClick={handleOpenUserMenu}
-                  sx={{ p: '0 0 0 8px' }}
-                >
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-                </IconButton>
-              </Tooltip>
-              <Menu
-                sx={{ mt: '45px' }}
-                id="menu-appbar"
-                anchorEl={anchorElUser}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={Boolean(anchorElUser)}
-                onClose={handleCloseUserMenu}
-              >
-                {settings.map(({ name, route }) => (
-                  <Link href={route}>
-                    <MenuItem key={route} onClick={handleCloseUserMenu}>
-                      <Typography textAlign="center">{name}</Typography>
-                    </MenuItem>
+          <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
+            <Box sx={{ flexGrow: 0, display: 'flex' }}>
+              {userPages.map((item) => {
+                if (item.private && !isLoged) return null;
+                if (item.publicOnly && isLoged) return null;
+                return (
+                  <Link key={item.name} href={item.route}>
+                    <Button
+                      sx={{
+                        my: 2,
+                        color: 'white',
+                        display: 'block',
+                      }}>
+                      {item.name}
+                    </Button>
                   </Link>
-                ))}
-              </Menu>
+                );
+              })}
             </Box>
+            {isLoged && (
+              <Button
+                onClick={handleLogin}
+                sx={{
+                  my: 2,
+                  color: 'white',
+                  display: 'block',
+                }}>
+                Log out
+              </Button>
+            )}
+            <Button
+              sx={{ color: 'white', display: { xs: 'none', md: 'block' } }}
+              onClick={handleLogin}>
+              {isLoged ? 'MLogout' : 'MLogin'}
+            </Button>
           </Box>
         </Toolbar>
       </Container>

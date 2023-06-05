@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using back.Dtos.Output.Category;
 using back.Dtos.Output.Coment;
 using back.Dtos.Output.Entry;
 using back.Dtos.Output.Event;
@@ -19,13 +20,16 @@ public class EventMappingProfile:Profile
         CreateMap<Feature, FeatureGetOutDto>();
         CreateMap<Entry, EntryGetOutDto>();
         CreateMap<User, UserGetOutDto>();
+        CreateMap<Category, CategoryGetOutDto>();
         CreateMap<Event, EventGetOutDto>()
        
 
             .ForMember(dest => dest.Comments, opt => opt.MapFrom(src => src.Coment))
             .ForMember(dest => dest.Feature, opt => opt.MapFrom(src => src.Feature))
             .ForMember(dest => dest.Ranking, opt => opt.MapFrom(src => src.Ranking))
+            .ForMember(dest => dest.Category, opt => opt.MapFrom(src => src.Category))
             .ForMember(dest => dest.Entry, opt => opt.MapFrom(src => src.Entry));
+           
     }
 
 }

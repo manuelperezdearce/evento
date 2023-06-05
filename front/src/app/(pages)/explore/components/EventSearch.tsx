@@ -1,5 +1,5 @@
 'use client';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { Box, Button, Drawer, InputAdornment, Stack, TextField } from '@mui/material';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import SortRoundedIcon from '@mui/icons-material/SortRounded';
@@ -17,8 +17,20 @@ type TQuery = {
     fromDate: Date | null;
 };
 
+type TCategory = string;
+
 export const EventSearch = () => {
-    const searchBarInput = useRef<HTMLInputElement>(null);
+    const [query, setQuery] = useState<TQuery>({
+        name: '',
+        isFree: false,
+        onlyAdults: false,
+        city: '',
+        toDate: null,
+        fromDate: null,
+    });
+
+    const [category, setCategory] = useState<TCategory>('');
+
     const [open, setOpen] = useState<boolean>(false);
 
     const toggleDrawer = () => {
@@ -27,30 +39,17 @@ export const EventSearch = () => {
 
     const handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const form = event.target as HTMLFormElement;
-        const formData = new FormData(form);
-
-        // const name = formData.get('name') as string;
-        const name = searchBarInput.current?.value as string;
-        const isFree = formData.get('free') as true | null;
-        const onlyAdults = formData.get('onlyAdults') as true | null;
-        const city = formData.get('city') as string;
-        const toDate = formData.get('toDate') as Date | null;
-        const fromDate = formData.get('fromDate') as Date | null;
-
-        const category = formData.get('category') as string;
-
-        const query: TQuery = {
-            name,
-            isFree: isFree || false,
-            onlyAdults: onlyAdults || false,
-            city,
-            toDate,
-            fromDate,
-        };
-
-        console.log(category);
+        console.log('category:', category);
         console.log(query);
+    };
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.target.name === 'isFree' || e.target.name === 'onlyAdults') {
+            setQuery({ ...query, [e.target.name]: !query[e.target.name] });
+            return;
+        }
+        const obj = { ...query, [e.target.name]: e.target.value };
+        setQuery(obj);
     };
 
     return (
@@ -60,9 +59,9 @@ export const EventSearch = () => {
             sx={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
             <TextField
                 name="name"
+                onChange={handleChange}
                 label="Tipo de evento o nombre"
                 placeholder="Fiesta electronica"
-                inputRef={searchBarInput}
                 InputProps={{
                     sx: { borderRadius: 30 },
                     startAdornment: (
@@ -118,14 +117,17 @@ export const EventSearch = () => {
                         fontSize="large"
                         sx={{ alignSelf: 'end', cursor: 'pointer' }}
                     />
-                    <SearchFilters />
+                    <SearchFilters
+                        handleChange={handleChange}
+                        setCategory={setCategory}
+                    />
                     <Button type="submit" variant="contained" onClick={toggleDrawer}>
                         Filtrar
                     </Button>
                 </Stack>
             </Drawer>
             <Box sx={{ display: { xs: 'none', md: 'block' } }}>
-                <SearchFilters />
+                <SearchFilters handleChange={handleChange} setCategory={setCategory} />
             </Box>
         </Box>
     );

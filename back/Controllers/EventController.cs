@@ -73,6 +73,29 @@ public class EventController : ControllerBase
     }
 
 
+    [HttpGet("{name}")]
+    public async Task<IActionResult> FilterByName(string name)
+    {
+        EventGetOutDto events = await _EventService.FilterByName(name);
+
+        if (events is null)
+            return BadRequest("error");
+
+        return Ok(events);
+    }
+
+
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> FilterByCategory(int id)
+    {
+        EventGetOutDto events = await _EventService.FilterByCategory(id);
+
+        if (events is null)
+            return BadRequest("error");
+
+        return Ok(events);
+    }
 
 
 }

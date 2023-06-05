@@ -27,4 +27,6 @@ public class EventUpdateInDtocs
     public int EntryId { get; set; }
 
     public bool IsActive{ get; set; }
+
+    public int CategoryId { get; set; }
 }
