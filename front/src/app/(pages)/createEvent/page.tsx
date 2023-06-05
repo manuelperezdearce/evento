@@ -28,10 +28,11 @@ export default function createEvent() {
         category: '',
         tags: [],
         direction: '',
+        city: '',
         description: '',
         time: '',
         image: null,
-        backgroundImage: null,
+        // backgroundImage: null,
         startDate: '',
         endDate: '',
         isFree: false,
@@ -98,21 +99,39 @@ export default function createEvent() {
                     />
                 </Stack>
 
-                <TextField
-                    // required
-                    name="direction"
-                    label="Dirección"
-                    placeholder="43 Newport Lane
+                <Stack gap="2rem" sx={{ flexDirection: { xs: 'column', sm: 'row' } }}>
+                    <TextField
+                        // required
+                        fullWidth
+                        name="direction"
+                        label="Dirección Completa"
+                        placeholder="43 Newport Lane
                     Buenos Aires, Argentina"
-                    InputProps={{
-                        startAdornment: (
-                            <InputAdornment position="start">
-                                <Icons.PlaceRoundedIcon color="primary" />
-                            </InputAdornment>
-                        ),
-                    }}
-                    onChange={handleChange}
-                />
+                        InputProps={{
+                            startAdornment: (
+                                <InputAdornment position="start">
+                                    <Icons.DirectionsRoundedIcon color="primary" />
+                                </InputAdornment>
+                            ),
+                        }}
+                        onChange={handleChange}
+                    />
+                    <TextField
+                        // required
+                        fullWidth
+                        name="city"
+                        label="Ciudad"
+                        placeholder="Buenos Aires"
+                        InputProps={{
+                            startAdornment: (
+                                <InputAdornment position="start">
+                                    <Icons.PlaceRoundedIcon color="primary" />
+                                </InputAdornment>
+                            ),
+                        }}
+                        onChange={handleChange}
+                    />
+                </Stack>
 
                 <Stack gap="2rem" sx={{ flexDirection: { xs: 'column', sm: 'row' } }}>
                     <TextField
@@ -136,7 +155,7 @@ export default function createEvent() {
                         }}
                     />
 
-                    <TextField
+                    {/* <TextField
                         className="fileUpload"
                         fullWidth
                         // required
@@ -152,7 +171,7 @@ export default function createEvent() {
                                 </InputAdornment>
                             ),
                         }}
-                    />
+                    /> */}
                 </Stack>
 
                 <TextField

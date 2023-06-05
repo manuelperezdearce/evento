@@ -6,7 +6,7 @@ import Footer from '../common/components/Footer';
 export const ContainerBody = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
-      <Container sx={{ minHeight: '100vh' }} >{children}</Container>
+      <Container>{children}</Container>
       <Footer />
     </>
   );
