@@ -3,12 +3,16 @@ import { configureStore } from '@reduxjs/toolkit';
 import categoryReducer from './slices/CategorySlice';
 import isLogedReducer from './slices/IsLogedSlice';
 import eventsReducer from './slices/EventsSlice';
+import AuthReducer from './slices/EventsSlice';
+import UserReducer from './slices/EventsSlice';
 
 export const store = configureStore({
     reducer: {
         category: categoryReducer,
         isLoged: isLogedReducer,
         events: eventsReducer,
+        auth: AuthReducer,
+        user: UserReducer,
     },
 });
 
