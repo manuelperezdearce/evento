@@ -1,3 +1,5 @@
+import { TCategory, TEvent } from '@/app/common/types/commonTypes';
+
 export interface InitialState {
     loading: boolean;
     error: boolean;
@@ -8,7 +10,6 @@ export interface CategoriesState extends InitialState {
     categories: TCategory[];
 }
 
-export type TCategory = {
-    id: number;
-    name: string;
-};
+export interface eventsState extends InitialState {
+    events: TEvent[];
+}
