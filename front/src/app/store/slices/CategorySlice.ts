@@ -24,18 +24,19 @@ const CategorySlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: (builder) => {
-        builder.addCase(getCategories.pending, (state) => {
-            state.loading = true;
-        });
-        builder.addCase(getCategories.rejected, (state, action) => {
-            state.loading = false;
-            state.error = true;
-            state.errorMessage = action.error.message;
-        });
-        builder.addCase(getCategories.fulfilled, (state, action) => {
-            state.loading = false;
-            state.categories = action.payload;
-        });
+        builder
+            .addCase(getCategories.pending, (state) => {
+                state.loading = true;
+            })
+            .addCase(getCategories.rejected, (state, action) => {
+                state.loading = false;
+                state.error = true;
+                state.errorMessage = action.error.message;
+            })
+            .addCase(getCategories.fulfilled, (state, action) => {
+                state.loading = false;
+                state.categories = action.payload;
+            });
     },
 });
 
