@@ -15,12 +15,13 @@ import Checkboxes from './components/Checkbox';
 import { useDispatch } from 'react-redux';
 import { createUser } from '@/app/store/slices/UserSlice';
 import { TCreateUser } from '@/app/common/types/commonTypes';
+import { AsyncThunkAction } from '@reduxjs/toolkit';
 
 export default function Register() {
     const dispatch = useDispatch();
     const [alertPassword, setAlertPassword] = useState(false);
     const [alertOrganizator, setAlertOrganizator] = useState(false);
-    const [form, setForm] = useState<TCreateUser>({
+    const [form, setForm] = useState({
         name: '',
         lastName: '',
         email: '',
@@ -39,6 +40,9 @@ export default function Register() {
         setForm({ ...form, [e.target.name]: e.target.value });
         setAlertPassword(false);
     };
+    const handleDispatch = () => {
+        dispatch(createUser(form) as any);
+    };
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -48,7 +52,7 @@ export default function Register() {
             return;
         } else {
             console.log(form);
-            dispatch(createUser(form));
+            handleDispatch();
         }
     };
 

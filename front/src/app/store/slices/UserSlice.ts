@@ -10,20 +10,17 @@ const initialState: CreateUserState = {
     errorMessage: '',
 };
 
-const createUser = createAsyncThunk<TUser, TCreateUser>(
-    'user/createUser',
-    async (user) => {
-        try {
-            const res = await axios.post(
-                'https://backcountry.azurewebsites.net/api/User',
-                user
-            );
-            return res.data;
-        } catch (err) {
-            throw new Error('Error en la creacion de usuario');
-        }
+const createUser = createAsyncThunk('user/createUser', async (user: TCreateUser) => {
+    try {
+        const res = await axios.post(
+            'https://backcountry.azurewebsites.net/api/User',
+            user
+        );
+        return res.data;
+    } catch (err) {
+        throw new Error('Error en la creacion de usuario');
     }
-);
+});
 
 const UserSlice = createSlice({
     name: 'user',

@@ -28,4 +28,10 @@ export interface TUser {
     password: string;
 }
 
-export interface TCreateUser extends Omit<TUser, 'id'> {}
+export interface TCreateUser {
+    name: string;
+    lastName: string;
+    email: string;
+    isOrganizator: boolean;
+    password: string;
+}
