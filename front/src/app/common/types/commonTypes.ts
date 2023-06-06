@@ -18,3 +18,14 @@ export type TCategory = {
     id: number;
     name: string;
 };
+
+export interface TUser {
+    id: number;
+    name: string;
+    lastName: string;
+    email: string;
+    isOrganizator: boolean;
+    password: string;
+}
+
+export interface TCreateUser extends Omit<TUser, 'id'> {}
