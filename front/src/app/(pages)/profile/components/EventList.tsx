@@ -64,20 +64,12 @@ export default function EventList() {
             statusSelect: ""
         }
     )
-<<<<<<< HEAD
-=======
 
     const handleDeleteButton = (id: string) => {
         const newArray = events.filter((event) => event.id != id)
         setEvents(newArray)
     }
 
-    useEffect(() => {
-        console.log(window.location.pathname)
-    }, [selects])
-
-
->>>>>>> 84e39ba9b9f58b27781b3dfcf8ea8a623b4e4c35
     const activeFilter = (event: event) => {
         if (selects.statusSelect == '1') {
             return event.active === true

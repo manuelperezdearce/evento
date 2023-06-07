@@ -1,6 +1,6 @@
 'use client';
 import '../components/style.css';
-import { Box, Container } from '@mui/material';
+import { Box, Container, Stack } from '@mui/material';
 import { useParams } from 'next/navigation';
 import { InfoSection, ButtonsDetail, Comments, Location, Features } from '../components';
 
@@ -13,8 +13,11 @@ export default function EventDetail() {
         <Container maxWidth="lg" sx={{ mt: '3rem', mb: '3rem' }}>
             <InfoSection id={Number(id)} />
             <ButtonsDetail />
-            <Features />
-            <Location />
+            <Stack direction={'row'} justifyContent={'space-between'} gap={2} >
+                <Features />
+                <Location />
+            </Stack>
+
             <Comments />
             <Box
                 sx={{

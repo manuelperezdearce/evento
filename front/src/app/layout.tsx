@@ -3,7 +3,6 @@ import { MuiThemeProvider } from './styles/MuiThemeProvider';
 import './globals.css';
 import { Hero } from './common/components/Hero';
 import { Navbar } from './common/components/Navbar';
-import Head from 'next/head';
 import { ContainerBody } from './containers/ContainerBody';
 import { Providers } from './store/provider';
 
@@ -22,11 +21,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     <MuiThemeProvider>
                         <Navbar />
 
-                        <Hero />
+                        {/* <Hero /> */}
 
                         <ContainerBody>{children}</ContainerBody>
                     </MuiThemeProvider>
                 </Providers>
+                {/* <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDaeWicvigtP9xPv919E-RNoxfvC-Hqik&callback=iniciarMap"></script> */}
             </body>
             {/* </Providers> */}
         </html>

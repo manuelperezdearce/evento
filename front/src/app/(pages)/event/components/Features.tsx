@@ -19,7 +19,7 @@ export const Features = () => {
         },
     };
     return (
-        <Box>
+        <Box width={'100%'}>
             <Typography variant="h5" fontWeight={'600'}>
                 Cuando y donde
                 {Object.entries(features).map(([key, value]) => {
