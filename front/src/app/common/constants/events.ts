@@ -2,6 +2,7 @@ export const events = [
     {
         name: 'Concierto en el parque',
         categoryId: 1,
+        city: 'Buenos Aires',
         direction: 'Parque Central, Calle Principal',
         description:
             'Disfruta de una tarde llena de música en vivo en el hermoso Parque Central. Varios artistas locales se presentarán en este evento gratuito para toda la familia.',
@@ -16,6 +17,7 @@ export const events = [
     {
         name: 'Exposición de arte contemporáneo',
         categoryId: 2,
+        city: 'Buenos Aires',
         direction: 'Galería de Arte Moderno, Avenida Principal',
         description:
             'Ven y admira una increíble colección de obras de arte contemporáneo de artistas reconocidos a nivel nacional e internacional. Esta exposición es solo para adultos y tiene una tarifa de entrada.',
@@ -31,6 +33,7 @@ export const events = [
     {
         name: 'Festival gastronómico',
         categoryId: 3,
+        city: 'Buenos Aires',
         direction: 'Plaza de la Ciudad, Calle Principal',
         description:
             'Descubre una variedad de deliciosos platos preparados por los mejores chefs de la región en este emocionante festival gastronómico. La entrada es gratuita, pero los alimentos tienen un costo.',
@@ -45,6 +48,7 @@ export const events = [
     {
         name: 'Concierto de rock',
         categoryId: 4,
+        city: 'Buenos Aires',
         direction: 'Estadio Principal, Avenida Central',
         description:
             'Disfruta de un increíble concierto de rock con bandas reconocidas a nivel internacional. Este evento es apto para todas las edades y la entrada es gratuita.',
@@ -59,6 +63,7 @@ export const events = [
     {
         name: 'Feria de arte local',
         categoryId: 5,
+        city: 'Buenos Aires',
         direction: 'Centro Cultural, Calle Principal',
         description:
             'Descubre el talento artístico local en esta feria de arte. Habrá exposiciones, demostraciones y venta de obras de artistas emergentes. La entrada es gratuita.',
@@ -73,6 +78,7 @@ export const events = [
     {
         name: 'Festival de cine independiente',
         categoryId: 6,
+        city: 'Buenos Aires',
         direction: 'Cine Central, Avenida Principal',
         description:
             'Sumérgete en el mundo del cine independiente con proyecciones de películas de diferentes géneros y temáticas. Disfruta de una experiencia cinematográfica única. Entrada con costo.',
@@ -87,6 +93,7 @@ export const events = [
     {
         name: 'Taller de cocina saludable',
         categoryId: 7,
+        city: 'Buenos Aires',
         direction: 'Escuela de Cocina, Calle Principal',
         description:
             'Aprende a preparar deliciosos platos saludables en este taller de cocina. Descubre técnicas y recetas para una alimentación equilibrada. Cupos limitados, reserva tu lugar.',
@@ -101,6 +108,7 @@ export const events = [
     {
         name: 'Exposición de fotografía',
         categoryId: 8,
+        city: 'Buenos Aires',
         direction: 'Galería de Arte, Avenida Principal',
         description:
             'Admira las mejores obras fotográficas de artistas locales e internacionales en esta exposición. Explora distintos estilos y temáticas fotográficas. Entrada gratuita para menores de 18 años.',
@@ -115,6 +123,7 @@ export const events = [
     {
         name: 'Festival de música electrónica',
         categoryId: 9,
+        city: 'Buenos Aires',
         direction: 'Parque de la Ciudad, Avenida Principal',
         description:
             'Sumérgete en el mundo de la música electrónica con DJ reconocidos a nivel internacional. Disfruta de un ambiente vibrante y energético. Entrada con costo.',
@@ -129,6 +138,7 @@ export const events = [
     {
         name: 'Exposición de esculturas',
         categoryId: 10,
+        city: 'Buenos Aires',
         direction: 'Museo de Arte Moderno, Calle Secundaria',
         description:
             'Admira las impresionantes esculturas de artistas contemporáneos en esta exposición única. Explora diferentes materiales y técnicas escultóricas. Entrada gratuita para estudiantes.',
@@ -143,6 +153,7 @@ export const events = [
     {
         name: 'Festival de teatro callejero',
         categoryId: 11,
+        city: 'Buenos Aires',
         direction: 'Calles del Centro, Avenida Principal',
         description:
             'Disfruta de espectáculos teatrales en las calles de la ciudad. Actores y compañías teatrales mostrarán su talento en espacios públicos. Entrada gratuita para todo público.',
@@ -157,6 +168,7 @@ export const events = [
     {
         name: 'Conferencia sobre innovación tecnológica',
         categoryId: 12,
+        city: 'Buenos Aires',
         direction: 'Centro de Convenciones, Avenida Principal',
         description:
             'Aprende sobre las últimas tendencias en innovación tecnológica en esta conferencia. Expertos en el campo compartirán conocimientos y experiencias. Entrada con costo.',
@@ -171,6 +183,7 @@ export const events = [
     {
         name: 'Feria de artesanías',
         categoryId: 13,
+        city: 'Buenos Aires',
         direction: 'Plaza del Mercado, Calle Principal',
         description:
             'Explora una amplia variedad de artesanías locales en esta feria. Encuentra productos únicos y apoya a los artesanos de la región. Entrada gratuita.',
@@ -185,6 +198,7 @@ export const events = [
     {
         name: 'Festival de Jazz en el Parque',
         categoryId: 14,
+        city: 'Buenos Aires',
         direction: 'Parque Central, Calle Principal',
         description:
             'Disfruta de una noche mágica con música de jazz en vivo interpretada por reconocidos artistas internacionales. Este evento al aire libre es gratuito y apto para todas las edades.',
@@ -199,6 +213,7 @@ export const events = [
     {
         name: 'Exposición de Arte Aborigen',
         categoryId: 15,
+        city: 'Buenos Aires',
         direction: 'Galería de Arte Contemporáneo, Avenida Principal',
         description:
             'Sumérgete en la riqueza cultural de las artes aborígenes con esta exposición. Descubre obras tradicionales y contemporáneas que representan la identidad y la historia de diversas comunidades indígenas. Entrada gratuita.',
@@ -213,6 +228,7 @@ export const events = [
     {
         name: 'Festival de Cine de Terror',
         categoryId: 16,
+        city: 'Buenos Aires',
         direction: 'Cine Central, Calle Secundaria',
         description:
             'Si te gusta el cine de terror, no te puedes perder este festival. Disfruta de proyecciones de películas escalofriantes y vive la adrenalina en cada función. Entrada con costo.',
@@ -227,6 +243,7 @@ export const events = [
     {
         name: 'Conferencia de Innovación y Tecnología',
         categoryId: 17,
+        city: 'Buenos Aires',
         direction: 'Centro de Convenciones, Avenida Principal',
         description:
             'Descubre las últimas tendencias en innovación y tecnología en esta conferencia. Expertos de renombre compartirán conocimientos y perspectivas sobre el futuro digital. Entrada con costo.',
@@ -241,6 +258,7 @@ export const events = [
     {
         name: 'Feria Gastronómica Internacional',
         categoryId: 18,
+        city: 'Buenos Aires',
         direction: 'Plaza de la Ciudad, Avenida Principal',
         description:
             'Embárcate en un viaje culinario alrededor del mundo en esta feria gastronómica. Prueba platos exquisitos preparados por reconocidos chefs internacionales. Entrada gratuita, costo de alimentos y bebidas.',
@@ -255,6 +273,7 @@ export const events = [
     {
         name: 'Festival de Arte Urbano',
         categoryId: 19,
+        city: 'Buenos Aires',
         direction: 'Centro de la Ciudad, Calle Principal',
         description:
             'Disfruta de una explosión de creatividad en el Festival de Arte Urbano. Murales, graffiti, performances y más te esperan en este evento gratuito para todo público.',
@@ -269,6 +288,7 @@ export const events = [
     {
         name: 'Concierto de Música Clásica',
         categoryId: 20,
+        city: 'Buenos Aires',
         direction: 'Teatro Principal, Avenida Central',
         description:
             'Sumérgete en la belleza de la música clásica con este concierto sinfónico. Disfruta de obras maestras interpretadas por una orquesta de renombre internacional. Entrada con costo.',
@@ -283,6 +303,7 @@ export const events = [
     {
         name: 'Taller de Fotografía Nocturna',
         categoryId: 21,
+        city: 'Buenos Aires',
         direction: 'Estudio Fotográfico, Calle Secundaria',
         description:
             'Aprende las técnicas y secretos para capturar imágenes impresionantes durante la noche en este taller de fotografía especializado. Cupos limitados, se requiere inscripción previa.',
@@ -297,6 +318,7 @@ export const events = [
     {
         name: 'Feria de Diseño y Moda',
         categoryId: 22,
+        city: 'Buenos Aires',
         direction: 'Centro de Convenciones, Avenida Principal',
         description:
             'Descubre las últimas tendencias en diseño y moda en esta feria. Exposiciones, desfiles, y venta de productos de diseñadores emergentes y consagrados. Entrada con costo.',
@@ -311,6 +333,7 @@ export const events = [
     {
         name: 'Conferencia de Medio Ambiente',
         categoryId: 23,
+        city: 'Buenos Aires',
         direction: 'Auditorio Municipal, Calle Principal',
         description:
             'Aprende sobre los desafíos ambientales actuales y las soluciones sostenibles en esta conferencia. Expertos en medio ambiente compartirán su conocimiento y experiencias. Entrada gratuita.',
@@ -325,6 +348,7 @@ export const events = [
     {
         name: 'Festival de Cine Independiente',
         categoryId: 24,
+        city: 'Buenos Aires',
         direction: 'Cineclub Municipal, Avenida Principal',
         description:
             'Sumérgete en el mundo del cine independiente con este festival. Disfruta de proyecciones de películas de diversas temáticas y géneros. Entrada gratuita para estudiantes.',
@@ -339,6 +363,7 @@ export const events = [
     {
         name: 'Exposición de Arte Contemporáneo',
         categoryId: 25,
+        city: 'Buenos Aires',
         direction: 'Galería de Arte Moderno, Avenida Central',
         description:
             'Admira una colección de obras de arte contemporáneo de artistas locales e internacionales. Explora diferentes estilos y expresiones artísticas. Entrada gratuita.',
@@ -353,6 +378,7 @@ export const events = [
     {
         name: 'Concierto de Rock Alternativo',
         categoryId: 26,
+        city: 'Buenos Aires',
         direction: 'Estadio Municipal, Calle Principal',
         description:
             'Vive la energía del rock alternativo en este concierto inolvidable. Bandas destacadas del género te harán vibrar con sus mejores canciones. Entrada con costo.',
