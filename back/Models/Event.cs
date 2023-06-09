@@ -30,6 +30,8 @@ public class Event
 
     public int EntryId { get; set; }
 
+    public int CategoryId { get; set; }
+
     public ICollection<Coment> Coment { get; set; }
     //public ICollection<Ranking> Ranking { get; set; }
 
@@ -40,6 +42,8 @@ public class Event
     public Ranking Ranking { get; set; }
     public Entry Entry { get; set; }
 
+    public Category Category { get; set; }
+    
     public bool IsActive { get; set; }
 
     public bool Status { get; set; }
