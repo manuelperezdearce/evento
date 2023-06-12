@@ -70,11 +70,6 @@ export default function EventList() {
         setEvents(newArray)
     }
 
-    useEffect(() => {
-        console.log(window.location.pathname)
-    }, [selects])
-
-
     const activeFilter = (event: event) => {
         if (selects.statusSelect == '1') {
             return event.active === true
