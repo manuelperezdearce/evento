@@ -3,8 +3,8 @@ import { configureStore } from '@reduxjs/toolkit';
 import categoryReducer from './slices/CategorySlice';
 import isLogedReducer from './slices/IsLogedSlice';
 import eventsReducer from './slices/EventsSlice';
-import AuthReducer from './slices/EventsSlice';
-import UserReducer from './slices/EventsSlice';
+import AuthReducer from './slices/AuthSlice';
+import UserReducer from './slices/UserSlice';
 
 export const store = configureStore({
     reducer: {
