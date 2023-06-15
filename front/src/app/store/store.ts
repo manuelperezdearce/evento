@@ -1,19 +1,21 @@
 'use client';
-import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import categoryReducer from './slices/CategorySlice';
 import isLogedReducer from './slices/IsLogedSlice';
 import eventsReducer from './slices/EventsSlice';
 import AuthReducer from './slices/AuthSlice';
 import UserReducer from './slices/UserSlice';
 
+const rootReducer = combineReducers({
+    category: categoryReducer,
+    isLoged: isLogedReducer,
+    events: eventsReducer,
+    auth: AuthReducer,
+    user: UserReducer,
+});
+
 export const store = configureStore({
-    reducer: {
-        category: categoryReducer,
-        isLoged: isLogedReducer,
-        events: eventsReducer,
-        auth: AuthReducer,
-        user: UserReducer,
-    },
+    reducer: rootReducer,
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
