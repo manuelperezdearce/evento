@@ -5,13 +5,14 @@ import isLogedReducer from './slices/IsLogedSlice';
 import eventsReducer from './slices/EventsSlice';
 import AuthReducer from './slices/AuthSlice';
 import UserReducer from './slices/UserSlice';
+import { useDispatch } from 'react-redux';
 
 const rootReducer = combineReducers({
-    category: categoryReducer,
-    isLoged: isLogedReducer,
-    events: eventsReducer,
     auth: AuthReducer,
     user: UserReducer,
+    events: eventsReducer,
+    isLoged: isLogedReducer,
+    category: categoryReducer,
 });
 
 export const store = configureStore({
@@ -21,4 +22,4 @@ export const store = configureStore({
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
-export type AppDispatch = typeof store.dispatch;
+export const useAppDispatch = () => useDispatch<typeof store.dispatch>();

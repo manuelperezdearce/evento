@@ -1,24 +1,14 @@
 'use client';
 import React, { useState } from 'react';
-import {
-    Button,
-    Stack,
-    TextField,
-    Typography,
-    Container,
-    Alert,
-    FormControlLabel,
-    FormGroup,
-    Checkbox,
-} from '@mui/material';
+import { Button, Stack, TextField, Typography, Container, Alert, FormControlLabel, FormGroup, Checkbox } from '@mui/material';
 import Checkboxes from './components/Checkbox';
-import { useDispatch } from 'react-redux';
 import { createUser } from '@/app/store/slices/UserSlice';
-import { TCreateUser } from '@/app/common/types/commonTypes';
-import { AsyncThunkAction } from '@reduxjs/toolkit';
+import { useAppDispatch } from '@/app/store/store';
+import { RootState } from '@/app/store/store';
+import { useSelector } from 'react-redux';
 
 export default function Register() {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const [alertPassword, setAlertPassword] = useState(false);
     const [alertOrganizator, setAlertOrganizator] = useState(false);
     const [form, setForm] = useState({
@@ -31,6 +21,8 @@ export default function Register() {
 
     const [confirmPassword, setConfirmPassword] = useState('');
 
+    const { loading }: { loading: boolean } = useSelector((state: RootState) => state.user);
+
     const handleChangeBox = (checked: boolean) => {
         setForm({ ...form, isOrganizator: checked });
         setAlertOrganizator(checked);
@@ -42,6 +34,7 @@ export default function Register() {
     };
     const handleDispatch = () => {
         dispatch(createUser(form) as any);
+        dispatch(createUser(form));
     };
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -60,13 +53,7 @@ export default function Register() {
         <Container maxWidth="lg" sx={{ mt: '3rem', mb: '3rem' }}>
             <Stack>
                 <Stack component={'form'} gap={2} onSubmit={(e) => handleSubmit(e)}>
-                    <Stack
-                        direction={'row'}
-                        justifyContent={'space-between'}
-                        flexWrap={'wrap'}
-                        gap={2}
-                        maxWidth={500}
-                        m={'auto'}>
+                    <Stack direction={'row'} justifyContent={'space-between'} flexWrap={'wrap'} gap={2} maxWidth={500} m={'auto'}>
                         <Stack>
                             <FormGroup>
                                 <FormControlLabel
@@ -80,10 +67,9 @@ export default function Register() {
                                             }}
                                         />
                                     }
-                                    onChange={(
-                                        event: React.SyntheticEvent<Element, Event>,
-                                        checked: boolean
-                                    ) => handleChangeBox(checked)}
+                                    onChange={(event: React.SyntheticEvent<Element, Event>, checked: boolean) =>
+                                        handleChangeBox(checked)
+                                    }
                                 />
                             </FormGroup>
                             <Alert
@@ -94,6 +80,15 @@ export default function Register() {
                                 }}>
                                 Importante! - Te estás registrando como Organizador
                             </Alert>
+                            {loading && (
+                                <Alert
+                                    severity="info"
+                                    sx={{
+                                        width: '100%',
+                                    }}>
+                                    Cargando...
+                                </Alert>
+                            )}
                         </Stack>
                         <TextField
                             type="text"
@@ -166,10 +161,7 @@ export default function Register() {
                                     label="He leído y acepto los términos y condiciones de uso de EvenTo®"
                                 />
                             </Stack>
-                            <Button
-                                variant="contained"
-                                type="submit"
-                                sx={{ margin: 'auto' }}>
+                            <Button variant="contained" type="submit" sx={{ margin: 'auto' }}>
                                 <Typography textAlign={'center'}>Crear cuenta</Typography>
                             </Button>
                         </Stack>
