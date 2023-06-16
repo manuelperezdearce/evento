@@ -16,7 +16,8 @@ const createUser = createAsyncThunk('user/createUser', async (user: TCreateUser)
         console.log(res.data);
         return res.data;
     } catch (err) {
-        throw new Error('Error en la creacion de usuario');
+        console.error('Error en la peticion', err);
+        throw err;
     }
 });
 

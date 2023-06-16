@@ -14,7 +14,8 @@ const getEvents = createAsyncThunk('events/getEvents', async () => {
         const res = await axios.get('url');
         return res.data;
     } catch (err) {
-        throw new Error('Error en la peticion');
+        console.error('Error en la peticion', err);
+        throw err;
     }
 });
 
@@ -56,9 +57,7 @@ const EventsSlice = createSlice({
             })
             .addCase(updateEvent.fulfilled, (state, action) => {
                 const updatedItem = action.payload;
-                const index = state.events.findIndex(
-                    (item) => item.id === updatedItem.id
-                );
+                const index = state.events.findIndex((item) => item.id === updatedItem.id);
                 if (index !== -1) {
                     state.events[index] = updatedItem;
                 }
@@ -67,8 +66,7 @@ const EventsSlice = createSlice({
                 state.errorMessage = '';
             })
             .addMatcher(
-                (action) =>
-                    action.type.endsWith('/pending') && action.type.startsWith('events/'),
+                (action) => action.type.endsWith('/pending') && action.type.startsWith('events/'),
                 (state) => {
                     state.loading = true;
                     state.error = false;
@@ -76,9 +74,7 @@ const EventsSlice = createSlice({
                 }
             )
             .addMatcher(
-                (action) =>
-                    action.type.endsWith('/rejected') &&
-                    action.type.startsWith('events/'),
+                (action) => action.type.endsWith('/rejected') && action.type.startsWith('events/'),
                 (state, action) => {
                     state.loading = false;
                     state.error = true;
