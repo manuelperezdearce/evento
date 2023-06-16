@@ -33,7 +33,6 @@ export default function Register() {
         setAlertPassword(false);
     };
     const handleDispatch = () => {
-        dispatch(createUser(form) as any);
         dispatch(createUser(form));
     };
 
