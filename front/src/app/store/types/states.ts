@@ -1,4 +1,4 @@
-import { TCategory, TCreateUser, TEvent, TUser } from '@/app/common/types/commonTypes';
+import { TCategory, TCreateUser, TEvent } from '@/app/common/types/commonTypes';
 
 export interface InitialState {
     loading: boolean;
@@ -17,7 +17,14 @@ export interface eventsState extends InitialState {
 export interface CreateUserState extends InitialState {
     user: TCreateUser | null;
 }
+export interface AuthData {
+    id: number;
+    name: string;
+    email: string;
+    isOrganizator: boolean;
+}
 
 export interface AuthUserState extends InitialState {
-    user: TUser | null;
+    userData: AuthData | null;
+    token: string | null;
 }
