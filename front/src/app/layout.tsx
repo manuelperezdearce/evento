@@ -12,7 +12,7 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-
+    console.log('render');
     return (
         <html lang="en">
             {/* <Providers> */}
