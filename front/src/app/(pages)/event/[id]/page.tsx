@@ -4,6 +4,7 @@ import { Box, Container, Stack } from '@mui/material';
 import { useParams } from 'next/navigation';
 import { InfoSection, ButtonsDetail, Comments, Location, Features } from '../components';
 
+
 export default function EventDetail() {
     const { id } = useParams();
 
@@ -16,6 +17,7 @@ export default function EventDetail() {
             <Stack direction={'row'} justifyContent={'space-between'} gap={2} >
                 <Features />
                 <Location />
+
             </Stack>
 
             <Comments />
