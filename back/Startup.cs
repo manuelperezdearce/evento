@@ -1,6 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using AutoMapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+
 namespace back;
 public class Startup
 {
@@ -13,7 +17,32 @@ public class Startup
     public IConfiguration Configuration { get; }
 
     public void ConfigureServices(IServiceCollection services)
+
+
+
+
+
+
     {
+
+        services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+        {
+            options.RequireHttpsMetadata = false;
+            options.SaveToken = true;
+            options.TokenValidationParameters = new TokenValidationParameters()
+            {
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateLifetime = true,
+                ValidateIssuerSigningKey = true,
+                ValidAudience = Configuration["Jwt:Audience"],
+                ValidIssuer = Configuration["Jwt:Issuer"],
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
+            };
+        });
+
+
+
         services.AddCors(options =>
         {
             options.AddPolicy(name: myCors, builder =>
@@ -23,6 +52,7 @@ public class Startup
         });
 
         services.AddControllers();
+        services.AddControllers().AddNewtonsoftJson();
         services.AddAutoMapper(typeof(Startup));
 
         services.AddSwaggerGen(c =>

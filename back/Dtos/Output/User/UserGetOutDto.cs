@@ -12,5 +12,7 @@ public class UserGetOutDto
 
     public string Password { get; set; }
 
+    public bool IsOrganizator { get; set; }
+
     public int? CityId { get; set; }
 }
