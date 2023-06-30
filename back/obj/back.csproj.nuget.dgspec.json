@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\LAPTOP HPP\\Desktop\\c#-react\\c11-11-t-csharp-react\\back\\back.csproj": {}
+    "C:\\Users\\LAPTOP HPP\\Desktop\\event\\evento\\back\\back.csproj": {}
   },
   "projects": {
-    "C:\\Users\\LAPTOP HPP\\Desktop\\c#-react\\c11-11-t-csharp-react\\back\\back.csproj": {
+    "C:\\Users\\LAPTOP HPP\\Desktop\\event\\evento\\back\\back.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\LAPTOP HPP\\Desktop\\c#-react\\c11-11-t-csharp-react\\back\\back.csproj",
+        "projectUniqueName": "C:\\Users\\LAPTOP HPP\\Desktop\\event\\evento\\back\\back.csproj",
         "projectName": "back",
-        "projectPath": "C:\\Users\\LAPTOP HPP\\Desktop\\c#-react\\c11-11-t-csharp-react\\back\\back.csproj",
+        "projectPath": "C:\\Users\\LAPTOP HPP\\Desktop\\event\\evento\\back\\back.csproj",
         "packagesPath": "C:\\Users\\LAPTOP HPP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\LAPTOP HPP\\Desktop\\c#-react\\c11-11-t-csharp-react\\back\\obj\\",
+        "outputPath": "C:\\Users\\LAPTOP HPP\\Desktop\\event\\evento\\back\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\LAPTOP HPP\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -85,7 +85,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.311\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.313\\RuntimeIdentifierGraph.json"
         }
       }
     }

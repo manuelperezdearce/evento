@@ -17,6 +17,7 @@ public class User
 
     public int? CityId { get; set; }
 
+    public bool IsOrganizator { get; set; }
     public City City { get; set; }
 
 }
