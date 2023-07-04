@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { CreateUserState } from '../types/states';
 import { TCreateUser, TUser } from '@/app/common/types/commonTypes';
+import { endPoints } from '@/app/common/constants/api';
 
 const initialState: CreateUserState = {
     user: null,
@@ -12,7 +13,7 @@ const initialState: CreateUserState = {
 
 const createUser = createAsyncThunk('user/createUser', async (user: TCreateUser) => {
     try {
-        const res = await axios.post('https://backcountry.azurewebsites.net/api/User/UserCreate', user);
+        const res = await axios.post(endPoints.signUp, user);
         console.log(res.data);
         return res.data;
     } catch (err) {
